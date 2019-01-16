@@ -13,7 +13,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const dbConnection = require('./db'); // loads our connection to the mongo database
 const routes = require("./routes");
-// const passport = require('./passport');
+const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
@@ -30,8 +30,8 @@ app.use(session({
 }));
 
 // Passport
-// app.use(passport.initialize());
-// app.use(passport.session()); // will call the deserializeUser
+app.use(passport.initialize());
+app.use(passport.session()); // will call the deserializeUser
 
 
 // If its production environment!

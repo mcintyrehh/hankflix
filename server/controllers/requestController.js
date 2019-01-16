@@ -4,10 +4,22 @@ const db = require("../models");
 module.exports = {
 
     create: function(req, res) {
-      db.Request
-        .create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+      const imdbID = req.body.imdb_id;
+      const title = req.body.title;
+      console.log(imdbID);
+      db.Request.findOne({ 'imdb_id': imdbID }, (err, requestMatch) => {
+        if (requestMatch) {
+          return res.json({
+            error: `${title} has been already been requested and is being monitored by the server!`
+          });
+        }
+        else {
+          db.Request
+          .create(req.body)
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));        
+        }
+      })
     },
     get: function(req, res) {
       db.Request
