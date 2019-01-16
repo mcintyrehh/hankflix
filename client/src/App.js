@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import API from "./utils/API";
 import './App.css';
 
+
 class App extends Component {
+  componentDidMount() {
+    const testReq = {
+      title: "Replicas",
+      imdb_id: "tt4154916",
+      poster_url: "http://image.tmdb.org/t/p/w500/kEuIYDEJ9ReBbJLb7QeP9KdbjEe.jpg"
+    }
+    API.newRequest(testReq);
+  }
   render() {
     return (
       <div className="App">
