@@ -1,6 +1,8 @@
 .container {
     height: calc(100vh - 69px - 64px);
     background-image: url("/images/ocean.jpg");
+    color: white;
+
 }
 
 .searchBox {
@@ -9,4 +11,14 @@
     /* border: 1pt solid red; */
     border-radius: 10pt;
     background-color: rgba(0, 0, 0, .8);
+}
+.searchHeadline {
+    color: white;
+    text-align: center;
+    margin: 20px;
+    font-size: 25pt;
+}
+.searchLine {
+    text-align: center;
+    display: flex
 }
