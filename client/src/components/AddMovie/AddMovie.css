@@ -1,0 +1,12 @@
+.container {
+    height: calc(100vh - 69px - 64px);
+    background-image: url("/images/ocean.jpg");
+}
+
+.searchBox {
+    margin: 30pt;
+    height: 90%;
+    /* border: 1pt solid red; */
+    border-radius: 10pt;
+    background-color: rgba(0, 0, 0, .8);
+}
