@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Input } from 'antd';
+import { Col, Row, Input, Button } from 'antd';
 import './AddMovie.css';
 
 // const Search = Input.Search;
@@ -10,7 +10,9 @@ class AddMovie extends Component {
         this.state = {
             queryTitle: '',
             queryYear: '',
-            queryID: ''
+            queryID: '',
+            iconLoadingTitle: false,
+            iconLoadingID: false
         }
     }
     handleChange = (event) => {
@@ -19,6 +21,14 @@ class AddMovie extends Component {
         })
         console.log(this.state);
     }
+    searchByYear = () => {
+        this.setState({ iconLoadingTitle: true })
+        console.log(`Title: ${this.state.queryTitle} Year: ${this.state.queryYear}`) 
+    }
+    searchByID = () => {
+        this.setState({ iconLoadingID: true })
+        console.log(`IMDb ID: ${this.state.queryID}`)
+    }
     render() {
         return (
             <div className="container">
@@ -26,24 +36,70 @@ class AddMovie extends Component {
                 <Col span={16}
                      className="searchBox">
                      <div className="searchHeadline">IMDb Movie Search</div>
-                     <Col className="searchLine" span={24}>
-                        <span style={{marginRight: 5}}> Title: </span>
-                        <Input
-                            placeholder="Jaws" 
-                            style={{width: 200}}
-                            name="queryTitle"
-                            value={this.state.queryYear}
-                            onChange={this.handleChange}>
-                        </Input>
-                        <span style={{marginRight: 5, marginLeft: 15}}>Year: </span>
-                        <Input
-                            placeholder="1975" 
-                            style={{width:100}}
-                            name="queryYear"
-                            value={this.state.queryYear}
-                            onChange={this.handleChange}>
-                        </Input>
-                     </Col>
+                     <Row type="flex" justify="center">
+                        <Col 
+                        span={9}
+                        style={{
+                            textAlign: "center", 
+                            borderBottom: "1px white solid",
+                            margin: 10}}>By Title</Col>
+                     </Row>
+                     <Row>
+                        <Col className="searchLine" span={24}>
+                            <span style={{marginRight: 5}}> Title: </span>
+                            <Input
+                                type="text"
+                                placeholder="Jaws" 
+                                style={{width: 200}}
+                                name="queryTitle"
+                                value={this.state.queryTitle}
+                                onChange={this.handleChange}>
+                            </Input>
+                            <span style={{marginRight: 5, marginLeft: 15}}>Year: </span>
+                            <Input
+                                type="text"
+                                placeholder="1975" 
+                                style={{width:100}}
+                                name="queryYear"
+                                value={this.state.queryYear}
+                                onChange={this.handleChange}>
+                            </Input>
+                            <Button
+                               type="primary" 
+                               icon="search" 
+                               style={{margin: 10}}
+                               loading={this.state.iconLoadingTitle}
+                               onClick={this.searchByYear}>
+                            </Button>
+                        </Col>                     
+                    </Row>
+                    <Row type="flex" justify="center">
+                        <Col 
+                        span={9}
+                        style={{
+                            textAlign: "center", 
+                            borderBottom: "1px white solid",
+                            margin: 10}}>By ID</Col>
+                    </Row>
+                    <Row>
+                        <Col className="searchLine" span={24}>
+                            <span style={{marginRight: 5}}> IMDb ID: </span>
+                            <Input
+                                placeholder="tt0073195" 
+                                style={{width: 200}}
+                                name="queryID"
+                                value={this.state.queryID}
+                                onChange={this.handleChange}>
+                            </Input>
+                            <Button
+                               type="primary" 
+                               icon="search" 
+                               style={{margin: 10}}
+                               loading={this.state.iconLoadingID}
+                               onClick={this.searchByID}>
+                            </Button>
+                        </Col>
+                    </Row>
                 </Col>
 
                 <Col span={4}></Col>
