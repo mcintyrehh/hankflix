@@ -6,8 +6,9 @@
 }
 
 .searchBox {
-    margin: 30pt;
-    height: 90%;
+    /* margin: 30pt; */
+    padding-top: 30pt;
+    height: 80%;
     /* border: 1pt solid red; */
     border-radius: 10pt;
     background-color: rgba(0, 0, 0, .8);
