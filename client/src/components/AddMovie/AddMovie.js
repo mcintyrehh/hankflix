@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'antd';
 import axios from 'axios';
 import './AddMovie.css';
+import { Card } from '../Card'
 
 // const Search = Input.Search;
 
@@ -114,9 +115,15 @@ class AddMovie extends Component {
                             </Col>
                         </Row>
                         <Row type="flex" justify="center">
-                            <Col 
+                            <Col
+                                type="flex"
+                                justify="center" 
                                 span={20}
-                                style={{ border: '1px solid red', minHeight: 40}}>
+                                style={{ border: '1px solid red', 
+                                minHeight: 40,
+                                marginBottom: 20,
+                                textAlign: "center"}}>
+                                {this.state.searchResponse.map(movie => <Card key={movie.Poster} movie={movie}/>)}
                     
                             </Col>
                     </Row>

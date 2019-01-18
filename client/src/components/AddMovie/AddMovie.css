@@ -1,5 +1,5 @@
 .container {
-    height: calc(100vh - 69px - 64px);
+    min-height: calc(100vh - 69px - 64px);
     background-image: url("/images/ocean.jpg");
     color: white;
 
