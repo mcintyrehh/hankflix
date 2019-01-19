@@ -51,7 +51,7 @@ class MovieCard extends Component {
       // </Col>
       <Col span={6} style={{ margin: 5, borderRadius: 10 }}>
         <div className="card">
-          <img alt={`pic for ${this.state.title}`} src={this.state.src}/>
+          <img alt={`pic for ${this.state.title}`} src={(this.state.src !== "N/A" )? this.state.src : "/images/default.png"}/>
           <div className="overlay">
             <div className="title">{this.state.title}</div>
             <div className="year">{this.state.year}<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload"></Button></div>

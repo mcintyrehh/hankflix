@@ -19,6 +19,10 @@ class AddMovie extends Component {
             searchResponse: []
         }
     }
+    componentDidMount = () => {
+        this.setState({searchResponse: json})
+        
+    }
     newRequest =(movieInfo) => {
         const req = {
             title: movieInfo.title,
@@ -133,7 +137,7 @@ class AddMovie extends Component {
                                 marginBottom: 20,
                                 textAlign: "center"}}>
                                 <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                                    {json.map(movie=><MovieCard key={movie.Poster} newRequest={this.newRequest} movie={movie}/>)}
+                                    {this.state.searchResponse.map(movie=><MovieCard key={movie.Poster} newRequest={this.newRequest} movie={movie}/>)}
                                 </div>
                                 {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                             </Col>
