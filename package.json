@@ -7,10 +7,17 @@
     "start:prod": "node server/server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node server/scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": "8.11.1",
+    "npm": "5.6.x"
+  },
+  "devDependencies": {
+    "concurrently": "4.1.0",
+    "nodemon": "1.18.9"
   },
   "dependencies": {
     "antd": "^3.12.3",
@@ -23,9 +30,5 @@
     "moment": "^2.23.0",
     "mongoose": "^5.4.4",
     "morgan": "~1.9.0"
-  },
-  "devDependencies": {
-    "concurrently": "4.1.0",
-    "nodemon": "1.18.9"
   }
 }
