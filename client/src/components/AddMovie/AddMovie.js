@@ -75,7 +75,7 @@ class AddMovie extends Component {
                         </Row>
                         <Row type="flex" justify="center">
                             <Col className="searchLine" span={24}>
-                                <span style={{marginRight: 5}}> Title: </span>
+                                <span style={{marginRight: 5, textAlign: "center"}}> Title: </span>
                                 <Input
                                     type="text"
                                     placeholder="Jaws" 
