@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'antd';
+import API from "../../utils/API";
 import axios from 'axios';
 import './AddMovie.css';
-import { Card } from '../Card'
+import { MovieCard } from '../Card'
 
 // const Search = Input.Search;
-
+const json = require('./data.json');
 class AddMovie extends Component {
     constructor() {
         super();
@@ -17,6 +18,16 @@ class AddMovie extends Component {
             iconLoadingID: false,
             searchResponse: []
         }
+    }
+    newRequest =(movieInfo) => {
+        const req = {
+            title: movieInfo.title,
+            imdb_id: movieInfo.imdbID,
+            poster_url: movieInfo.URL
+          }
+          API.newRequest(req);
+        console.log("yuuuuup");
+        console.log(movieInfo);
     }
     handleChange = (event) => {
         this.setState({
@@ -116,15 +127,15 @@ class AddMovie extends Component {
                         </Row>
                         <Row type="flex" justify="center">
                             <Col
-                                type="flex"
-                                justify="center" 
                                 span={20}
-                                style={{ border: '1px solid red', 
+                                style={{ 
                                 minHeight: 40,
                                 marginBottom: 20,
                                 textAlign: "center"}}>
-                                {this.state.searchResponse.map(movie => <Card key={movie.Poster} movie={movie}/>)}
-                    
+                                <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+                                    {json.map(movie=><MovieCard key={movie.Poster} newRequest={this.newRequest} movie={movie}/>)}
+                                </div>
+                                {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                             </Col>
                     </Row>
                     </Col>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from "./utils/API";
+// import API from "./utils/API";
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Row, Col } from 'antd';
 // import Home from "./pages/Home/home";
@@ -10,12 +10,7 @@ import './App.css';
 const { Header, Footer, Content } = Layout;
 class App extends Component {
   componentDidMount() {
-    const testReq = {
-      title: "Replicas",
-      imdb_id: "tt4154916",
-      poster_url: "http://image.tmdb.org/t/p/w500/kEuIYDEJ9ReBbJLb7QeP9KdbjEe.jpg"
-    }
-    API.newRequest(testReq);
+    console.log("😎Hankflix👨‍🎤")
   }
   render() {
     return (
@@ -24,7 +19,7 @@ class App extends Component {
           <Row>
             <Col span={4}></Col>
             <Col span={16}>
-              <div className="logo">😎Hankflix👨‍🎤</div>
+              <div className="logo"><span role="img" aria-label="smiley emoji">😎</span>Hankflix<span role="img" aria-label="smiley emoji">👨‍🎤</span></div>
             </Col>
             <Col span={4}></Col>
           </Row>
