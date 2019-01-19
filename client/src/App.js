@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import { Layout, Row, Col } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
+import env from "dotenv";
+import axios from 'axios';
 import AddMovie from "./components/AddMovie";
 import './App.css';
 
@@ -11,6 +13,13 @@ const { Header, Footer, Content } = Layout;
 class App extends Component {
   componentDidMount() {
     console.log("😎Hankflix👨‍🎤")
+    axios.get(`https://onrayradarr.duckdns.org/api/system/status?apikey=${env.SONARR_API}`)
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function(error) {
+      console.log(error);
+    })
   }
   render() {
     return (

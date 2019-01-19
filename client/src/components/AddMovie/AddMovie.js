@@ -74,7 +74,7 @@ class AddMovie extends Component {
                                 margin: 10}}>By Title</Col>
                         </Row>
                         <Row type="flex" justify="center">
-                            <Col className="searchLine" span={24}>
+                            <Col className="searchLine" span={10}>
                                 <span style={{marginRight: 5, textAlign: "center"}}> Title: </span>
                                 <Input
                                     type="text"
@@ -110,9 +110,9 @@ class AddMovie extends Component {
                                 borderBottom: "1px white solid",
                                 margin: 10}}>By ID</Col>
                         </Row>
-                        <Row>
-                            <Col className="searchLine" span={24}>
-                                <span style={{marginRight: 5}}> IMDb ID: </span>
+                        <Row type="flex" justify="center">
+                            <Col className="searchLine" span={10}>
+                                <span style={{marginRight: 5, textAlign: "center"}}> IMDb ID: </span>
                                 <Input
                                     placeholder="tt0073195" 
                                     style={{width: 200}}
