@@ -58,7 +58,7 @@ class MovieCard extends Component {
             <div className="id">IMDb ID: {this.state.imdbID}</div>
             <div className="plot">{this.state.plot}</div>
           </div> 
-      </div>
+        </div>
       </Col>
 
     )
