@@ -39,14 +39,17 @@ export default {
   },
   // Gets the book with the given id
   getRequest: function(id) {
-    return axios.get("/api/requests/" + id);
+    return axios.get("/api/requests" + id);
   },
   // Deletes the book with the given id
   deleteRequest: function(id) {
-    return axios.delete("/api/requests/" + id);
+    return axios.delete("/api/requests" + id);
   },
   // Saves a book to the database
   newRequest: function(requestData) {
-    return axios.post("/api/requests/", requestData);
+    return axios.post("/api/requests", requestData);
+  },
+  getCollection: function() {
+    return axios.get("/api/sonarr");
   }
 };

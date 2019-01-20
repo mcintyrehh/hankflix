@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-// import API from "./utils/API";
+import API from "./utils/API";
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Layout, Row, Col } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
-import env from "dotenv";
-import axios from 'axios';
+// import dotenv from "dotenv";
+// import axios from 'axios';
 import AddMovie from "./components/AddMovie";
 import './App.css';
-
+// const test = {
+//   title: "test",
+//   imdb_id: "90298320",
+//   url: "test.com"
+// }
 const { Header, Footer, Content } = Layout;
 class App extends Component {
   componentDidMount() {
     console.log("😎Hankflix👨‍🎤")
-    axios.get(`https://onrayradarr.duckdns.org/api/system/status?apikey=${env.SONARR_API}`)
-    .then(function(response) {
-      console.log(response);
-    })
-    .catch(function(error) {
-      console.log(error);
-    })
+    API.getCollection()
+      .then(res => {
+        console.log("test")
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+    // API.newRequest(test)
+    // .then(res => {
+    //   console.log("test")
+    //   console.log(res);
+    // })
+    // .catch(err => console.log(err));
   }
   render() {
     return (

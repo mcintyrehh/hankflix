@@ -29,7 +29,12 @@ class AddMovie extends Component {
             imdb_id: movieInfo.imdbID,
             poster_url: movieInfo.URL
           }
-          API.newRequest(req);
+          API.newRequest(req)
+          .then(res => {
+            console.log("test")
+            console.log(res);
+          })
+          .catch(err => console.log(err));;;
         console.log("yuuuuup");
         console.log(movieInfo);
     }

@@ -1,4 +1,4 @@
-import { Row, Col, Button, Card } from 'antd';
+import { Col, Button } from 'antd';
 import './Card.css'
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
