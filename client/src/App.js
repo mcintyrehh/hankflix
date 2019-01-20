@@ -8,27 +8,16 @@ import { Layout, Row, Col } from 'antd';
 // import axios from 'axios';
 import AddMovie from "./components/AddMovie";
 import './App.css';
-// const test = {
-//   title: "test",
-//   imdb_id: "90298320",
-//   url: "test.com"
-// }
+
 const { Header, Footer, Content } = Layout;
 class App extends Component {
   componentDidMount() {
     console.log("😎Hankflix👨‍🎤")
     API.getCollection()
       .then(res => {
-        console.log("test")
-        console.log(res);
+        console.log(res.data);
       })
       .catch(err => console.log(err));
-    // API.newRequest(test)
-    // .then(res => {
-    //   console.log("test")
-    //   console.log(res);
-    // })
-    // .catch(err => console.log(err));
   }
   render() {
     return (

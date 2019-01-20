@@ -17,7 +17,7 @@ const collectionSchema = new Schema({
         required: true
     },
     image: {
-        type: URL
+        type: String
     },
     downloaded: {
         type: String,
@@ -29,10 +29,7 @@ const collectionSchema = new Schema({
     },
     imdb_id: {
         type: String,
-        required: true
-    },
-    poster_url: {
-        type: String
+        required: false
     },
     added: {
         type: Date

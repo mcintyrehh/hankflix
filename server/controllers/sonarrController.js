@@ -7,11 +7,31 @@ require("dotenv").config();
 module.exports = {
 
     get: function(req, res) {
-        console.log(process.env.SONARR_API)
-        axios.get(`https://onrayradarr.duckdns.org/api/movie/1?apikey=${process.env.SONARR_API}`)
+        axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.SONARR_API}`)
         .then(function(response) {
             const allMovies = response.data
-            console.log(allMovies);
+            allMovies.map(movie => {
+              db.Collection.findOne({ 'imdb_id': movie.imdbId }, (err, match) => {
+                if (match) {
+                  return;
+                }
+                else {
+                  const movieAdd = {
+                    title: movie.title,
+                    overview: movie.overview,
+                    year: movie.year,
+                    status: movie.status,
+                    image: movie.images[0].url,
+                    downloaded: movie.downloaded,
+                    monitored: movie.monitored,
+                    imdb_id: movie.imdbId,
+                    added: movie.added
+                  }
+                  db.Collection.create(movieAdd);
+                  console.log("movie added!");
+                }
+              })
+            })
             return res.json(allMovies);
         })
         .catch(function(error) {
@@ -44,4 +64,3 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     }
   };
-  
