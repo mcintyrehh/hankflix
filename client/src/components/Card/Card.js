@@ -12,9 +12,9 @@ class MovieCard extends Component {
       overview: '',
       year: '',
       src: '',
-      tmdbID: '',
-      monitored: '',
-      downloaded: '',
+      tmdbID: <Button shape="circle" loading />,
+      monitored: <Button shape="circle" loading />,
+      downloaded: <Button shape="circle" loading />,
       imdbID: ''
     }
   }
@@ -79,7 +79,7 @@ class MovieCard extends Component {
               {/* ternary operators to set the css color based on whether they are downloaded or not */}
               <div>Currently monitored by server: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.monitored}</span></div>
               <div>Downloaded: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.downloaded}</span></div>
-              <Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload"></Button>
+              {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload">monitor</Button>)}
             </div> 
           </Col>
 
