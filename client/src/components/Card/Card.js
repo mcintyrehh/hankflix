@@ -30,6 +30,7 @@ class MovieCard extends Component {
   createRequest = () => {
     const req = {
       title: this.state.title,
+      qualityProfileId: 1,
       imdbID: this.state.imdbID,
       URL: this.state.src,
     }
@@ -48,8 +49,10 @@ class MovieCard extends Component {
         API.checkID(imdb_id)
         .then(res => {
           if (res.data.length > 0) {
-            this.setState({monitored: res.data[0].monitored})
-            this.setState({ downloaded: res.data[0].downloaded})
+            const movie = res.data[0]
+            this.setState({monitored: movie.monitored})
+            this.setState({ downloaded: movie.downloaded})
+            // this.setState({ year: movie.year})
             console.log(res.data);
           }
           else {
