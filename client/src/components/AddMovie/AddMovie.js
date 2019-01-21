@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Input, Button } from 'antd';
 import API from "../../utils/API";
-import axios from 'axios';
+// import axios from 'axios';
 import './AddMovie.css';
 import { MovieCard } from '../Card'
 
@@ -100,15 +100,6 @@ class AddMovie extends Component {
                                     style={{width: 200}}
                                     name="queryTitle"
                                     value={this.state.queryTitle}
-                                    onChange={this.handleChange}>
-                                </Input>
-                                <span style={{marginRight: 5, marginLeft: 15}}>Year: </span>
-                                <Input
-                                    type="text"
-                                    placeholder="1975" 
-                                    style={{width:100}}
-                                    name="queryYear"
-                                    value={this.state.queryYear}
                                     onChange={this.handleChange}>
                                 </Input>
                                 <Button

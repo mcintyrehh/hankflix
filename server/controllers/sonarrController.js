@@ -52,12 +52,17 @@ module.exports = {
         })
 
     },
-
-    remove: function(req, res) {
-      db.Request
-      .findById({ _id: req.params.id })
-        .then(dbModel => dbModel.remove())
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+    getID: function(req, res) {
+      const query=req.params.id;
+      axios.get(`https://api.themoviedb.org/3/movie/${query}?api_key=${process.env.TMDB_API}&language=en-US`)
+        .then(function(response) {
+          const responseBlock = response.data;
+          // console.log(responseBlock);
+          return res.json(responseBlock);
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
     }
+
   };

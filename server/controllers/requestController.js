@@ -21,11 +21,18 @@ module.exports = {
         }
       })
     },
+    
     get: function(req, res) {
-      db.Request
-        .find()
+      console.log(req.params.id);
+      db.Collection
+        .find({ 'imdb_id': req.params.id })
         .then(response => res.json(response))
         .catch(err => res.status(422).json(err));
+      // db.Collection
+
+      //   .find({})
+      //   .then(response => res.json(response))
+      //   .catch(err => res.status(422).json(err));
     },
     remove: function(req, res) {
       db.Request

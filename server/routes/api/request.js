@@ -5,9 +5,8 @@ router.route("/")
     // matches with '/api/requests'
     .get(requestController.get);
 router.route('/:id')
-    // matches with '/api/articles/:id'
-    //**will be used for adding a note to the article**/
-    // .put(requestController.update)
+    // matches with '/api/requests/:id'
+    .get(requestController.get)
     .delete(requestController.remove);
 
     module.exports = router;

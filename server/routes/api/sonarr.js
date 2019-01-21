@@ -7,5 +7,7 @@ router.route("/")
 router.route('/:id')
     // matches with '/api/sonarr/:id' in routes
     .get(sonarrController.search);
+router.route('/imdb/:id')
+    .get(sonarrController.getID);
 
 module.exports = router;
