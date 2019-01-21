@@ -51,5 +51,8 @@ export default {
   },
   getCollection: function() {
     return axios.get("/api/sonarr");
+  },
+  search: function(query) {
+    return axios.get(`/api/sonarr/${query}`, query);
   }
 };

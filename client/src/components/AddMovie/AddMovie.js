@@ -34,7 +34,7 @@ class AddMovie extends Component {
             console.log("test")
             console.log(res);
           })
-          .catch(err => console.log(err));;;
+          .catch(err => console.log(err));
         console.log("yuuuuup");
         console.log(movieInfo);
     }
@@ -42,22 +42,35 @@ class AddMovie extends Component {
         this.setState({
             [event.target.name]: event.target.value
         })
-        console.log(this.state);
+        // console.log(this.state);
     }
     searchByYear = () => {
         let self = this;
         this.setState({ iconLoadingTitle: true })
         console.log(`Title: ${this.state.queryTitle} Year: ${this.state.queryYear}`) 
-        const queryURL = `https://www.omdbapi.com/?s=${(this.state.queryTitle).trim()}&y=${this.state.queryYear}&type=movie&apikey=e73085d6`
-        axios.post(queryURL).then(function(response) {
-            const queryData = response.data.Search
-            console.log(queryData);
-            self.setState({ searchResponse: queryData });
-            self.setState({ iconLoadingTitle: false });
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
+        const query = this.state.queryTitle;
+        API.search(query)
+            .then(function(response) {
+                console.log(response.data.results);
+                const queryData = response.data.results;
+                self.setState({ searchResponse: queryData });
+                self.setState({ iconLoadingTitle: false });
+
+            })
+            .catch(function(err) {
+                console.log(err);
+            })
+        // const queryURL = `https://www.omdbapi.com/?s=${(this.state.queryTitle).trim()}&y=${this.state.queryYear}&type=movie&apikey=e73085d6`
+        // axios.post(queryURL).then(function(response) {
+        //     const queryData = response.data.Search
+        //     console.log(queryData);
+        //     self.setState({ searchResponse: queryData });
+        //     self.setState({ iconLoadingTitle: false });
+        // })
+        // .catch(function(error) {
+        //     console.log(error);
+        // });
+
     }
     searchByID = () => {
         this.setState({ iconLoadingID: true })
@@ -142,7 +155,7 @@ class AddMovie extends Component {
                                 marginBottom: 20,
                                 textAlign: "center"}}>
                                 <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                                    {this.state.searchResponse.map(movie=><MovieCard key={movie.Poster} newRequest={this.newRequest} movie={movie}/>)}
+                                    {this.state.searchResponse.map(movie=><MovieCard key={movie.id} newRequest={this.newRequest} movie={movie}/>)}
                                 </div>
                                 {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                             </Col>

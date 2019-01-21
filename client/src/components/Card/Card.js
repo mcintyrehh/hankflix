@@ -11,7 +11,7 @@ class MovieCard extends Component {
       title: '',
       year: '',
       src: '',
-      imdbID: ''
+      tmdbID: ''
     }
   }
   favStar = (userId, articleId, articleType) => {
@@ -32,10 +32,10 @@ class MovieCard extends Component {
     this.props.newRequest(req);
   }
   componentDidMount = (props) => {
-    this.setState({ title: this.props.movie.Title,
-                    year: this.props.movie.Year,
-                    src: this.props.movie.Poster,
-                    imdbID: this.props.movie.imdbID });
+    this.setState({ title: this.props.movie.title,
+                    year: this.props.movie.year,
+                    src: `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`,
+                    tmdbID: this.props.movie.id });
   }
 
   render() {
@@ -51,7 +51,7 @@ class MovieCard extends Component {
       // </Col>
       <Col span={6} style={{ margin: 5, borderRadius: 10 }}>
         <div className="card">
-          <img alt={`pic for ${this.state.title}`} src={(this.state.src !== "N/A" )? this.state.src : "/images/default.png"}/>
+          <img alt={`pic for ${this.state.title}`} src={(this.state.src !== "https://image.tmdb.org/t/p/w500null" )? this.state.src : "/images/default.png"}/>
           <div className="overlay">
             <div className="title">{this.state.title}</div>
             <div className="year">{this.state.year}<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload"></Button></div>

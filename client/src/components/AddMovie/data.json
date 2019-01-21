@@ -1,71 +1,48 @@
 [
     {
-        "Title":"Jaws",
-        "Year":"1975",
-        "imdbID":"tt0073195",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg"
+        "vote_count":4445,
+        "id":578,
+        "video":false,
+        "vote_average":7.6,
+        "title":"Jaws",
+        "popularity":22.554,
+        "poster_path":"/l1yltvzILaZcx2jYvc5sEMkM7Eh.jpg",
+        "original_language":"en",
+        "original_title":"Jaws",
+        "genre_ids":[27,53,12],
+        "backdrop_path":"/uTVuKo6OTGiead1ncsfH2klqYHC.jpg",
+        "adult":false,
+        "overview":"An insatiable great white shark terrorizes the townspeople of Amity Island, The police chief, an oceanographer and a grizzled shark hunter seek to destroy the bloodthirsty beast.",
+        "release_date":"1975-06-18"
     },
     {
-        "Title":"Jaws 2",
-        "Year":"1978",
-        "imdbID":"tt0077766",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+        "vote_count":754,
+        "id":579,
+        "video":false,
+        "vote_average":5.9,
+        "title":"Jaws 2",
+        "popularity":12.327,
+        "poster_path":"/zzGtimy1mUJYDjFjCmn2dpHREGV.jpg",
+        "original_language":"en",
+        "original_title":"Jaws 2",
+        "genre_ids":[27,53],
+        "backdrop_path":"/pUVaVyWFBRCRSuu6M0rFcyqAwQx.jpg",
+        "adult":false,
+        "overview":"Police chief Brody must protect the citizens of Amity after a second monstrous shark begins terrorizing the waters.",
+        "release_date":"1978-06-16"
     },
     {
-        "Title":"Jaws: The Revenge",
-        "Year":"1987",
-        "imdbID":"tt0093300",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BNGI1MTAxMWItOTE0OC00ZDhkLWE3Y2EtNjFiZmQ4NjQ1NGNkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-    },
-    {
-        "Title":"Jaws 3-D",
-        "Year":"1983",
-        "imdbID":"tt0085750",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BM2QwYjhiMzQtN2RiYS00MzgxLThmNzItMmJlNmMyMmQyYTA3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-    },
-    {
-        "Title":"The Making of Steven Spielberg's 'Jaws'",
-        "Year":"1995",
-        "imdbID":"tt0251821",
-        "Type":"movie",
-        "Poster":"https://ia.media-imdb.com/images/M/MV5BZjkxNTBmZDgtOGUwZS00N2IwLThiMTYtYzljYmU5NzE1MGQyXkEyXkFqcGdeQXVyNTUyNzA5ODE@._V1_SX300.jpg"
-    },
-    {
-        "Title":"In the Jaws of Life",
-        "Year":"1984",
-        "imdbID":"tt0088312",
-        "Type":"movie",
-        "Poster":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTIzNjU2ODUwOV5BMl5BanBnXkFtZTYwMzc2MDg4._V1_SX300.jpg"
-    },
-    {
-        "Title":"Jaws of Satan",
-        "Year":"1981",
-        "imdbID":"tt0082580",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BMTUyOTY4Mzc0N15BMl5BanBnXkFtZTcwNTY2NjE2NA@@._V1_SX300.jpg"},
-    {
-        "Title":"Cruel Jaws",
-        "Year":"1995",
-        "imdbID":"tt0112747",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BNDE2NTIzMjUtOTQ4ZC00ZWRlLTllZDAtNzZlNzRhNTRiNzA4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-    },
-    {
-        "Title":"Mako: The Jaws of Death",
-        "Year":"1976",
-        "imdbID":"tt0074845",
-        "Type":"movie",
-        "Poster":"https://m.media-amazon.com/images/M/MV5BODJiZmI1Y2ItMjBiNS00NGU0LTk2NmQtNGQ0YmVkYjNiNjlmXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-    },
-    {
-        "Title":"Jaws in Japan",
-        "Year":"2009",
-        "imdbID":"tt1786635",
-        "Type":"movie",
-        "Poster":"https://images-na.ssl-images-amazon.com/images/M/MV5BMTUxMzc3OTkyNV5BMl5BanBnXkFtZTcwMDA0NzMwNw@@._V1_SX300.jpg"
-    }
-]
+        "vote_count":474,
+        "id":17692,
+        "video":false,
+        "vote_average":4.3,
+        "title":"Jaws 3-D",
+        "popularity":11.685,
+        "poster_path":"/jGU5GucRaNCQ3L16qI7kfWch5Bn.jpg",
+        "original_language":"en",
+        "original_title":"Jaws 3-D",
+        "genre_ids":[53,27],
+        "backdrop_path":"/e6xFzaEzjSF4OnJ4f65ovMJE3vu.jpg",
+        "adult":false,
+        "overview":"This third film in the series follows a group of marine biologists attempting to capture a young great white shark that has wandered into Florida's Sea World Park. However, later it is discovered that the shark's 35-foot mother is also a guest at Sea World. What follows is the shark wreaking havoc on the visitors in the park.","release_date":"1983-03-16"},{"vote_count":376,"id":580,"video":false,"vote_average":3.7,"title":"Jaws: The Revenge","popularity":13.123,"poster_path":"/8dLHxbjXlLkogGVKxOg3SH1Kjel.jpg","original_language":"en","original_title":"Jaws: The Revenge","genre_ids":[12,53],"backdrop_path":"/ySH9Jusrh4zKeQf05Ue0W4lqx3U.jpg","adult":false,"overview":"After another deadly shark attack, Ellen Brody decides she has had enough of New England's Amity Island and moves to the Caribbean to join her son, Michael, and his family. But a great white shark has followed her there, hungry for more lives.","release_date":"1987-07-17"},{"vote_count":1,"id":542476,"video":false,"vote_average":3,"title":"Santa Jaws","popularity":2.574,"poster_path":"/6mcuTVc6C57lvtg4qiSQtdDwPiQ.jpg","original_language":"en","original_title":"Santa Jaws","genre_ids":[35,28,14],"backdrop_path":null,"adult":false,"overview":"Trying to survive the family Christmas, Cody makes a wish to be alone, which ends up backfiring when a shark manifests and kills his entire family.","release_date":"2018-08-15"},{"vote_count":23,"id":84060,"video":false,"vote_average":3.5,"title":"Cruel Jaws","popularity":2.149,"poster_path":"/tq9swm2dKN0bNb48HArwSDGuF12.jpg","original_language":"en","original_title":"Cruel Jaws","genre_ids":[12,53,27,10770],"backdrop_path":"/oseyaZwUM3FlATP2f4QAFQQP3Ea.jpg","adult":false,"overview":"A tiger shark bred by the Navy as a killing machine is wrecking havoc in the sleepy tourist town of Hampton Bay.","release_date":"1995-05-05"},{"vote_count":0,"id":95080,"video":false,"vote_average":0,"title":"Deadly Jaws","popularity":1.131,"poster_path":"/v8ZGSrBhDLR6b3mYYMlAO5X6458.jpg","original_language":"de","original_title":"Ein toter Taucher nimmt kein Gold","genre_ids":[18],"backdrop_path":"/tTiSYUFf58vI9aRGxqBJCZxC9JU.jpg","adult":false,"overview":"Two divers find a treasure map, which apparently points to a sunken treasure below the ocean. They hire a professional to help them get the gold but this guy turns out to have a few secrets of his own.","release_date":"1974-03-15"},{"vote_count":1,"id":514492,"video":false,"vote_average":0,"title":"Jaws","popularity":0.6,"poster_path":"/n29QyzfangOxBlNWtfukNXXu9YQ.jpg","original_language":"en","original_title":"Jaws","genre_ids":[16],"backdrop_path":null,"adult":false,"overview":"A short film animation by Zaven Najjar about the movie \"Jaws\".","release_date":"2018-05-29"},{"vote_count":6,"id":72021,"video":false,"vote_average":2.8,"title":"Psycho Shark","popularity":1.4,"poster_path":"/6MyB9GJ5jydNznhblCCV9VWnqXx.jpg","original_language":"ja","original_title":"Jaws in Japan","genre_ids":[18,27,9648],"backdrop_path":"/sNPBZByXfgCXfeBGPOcuyObTyr4.jpg","adult":false,"overview":"Beautiful girls are in danger. At Sunny Beach, a huge shark is waiting for his prey. College students Miki and Mai arrive on a private beach on a tropical island. They can't find the hotel where they booked their reservations, and have gotten hopelessly lost, until a handsome young man shows up, offering to take them to his lodge. But something is not right about the place. The owner's fingernails are tainted with blood and Miki feels something sinister lurking nearby.","release_date":"2009-08-21"},{"vote_count":0,"id":405180,"video":false,"vote_average":0,"title":"Moose Jaws","popularity":0.882,"poster_path":"/xw3RihoqKLuq9ULe2G4EqaHxhlZ.jpg","original_language":"en","original_title":"Moose Jaws","genre_ids":[35,27],"backdrop_path":null,"adult":false,"overview":"In a post apocalyptic Canada, the jawbone of the majestic moose has become the most coveted form of barter due to it's capabilities as a multi-purpose tool and weapon. One moose has had enough. The great white north is about to be reclaimed by nature.","release_date":""},{"vote_count":0,"id":501390,"video":false,"vote_average":0,"title":"Jaws 19","popularity":0.6,"poster_path":"/d1E4syWLar7FUhdaOH6shq5DmDk.jpg","original_language":"ru","original_title":"Челюсти 19","genre_ids":[28,27,878],"backdrop_path":null,"adult":false,"overview":"The beaches of the Baltic Sea are terrorized by a shark. The military manage to destroy it, but the shark returns in spectral form.","release_date":"2015-09-16"},{"vote_count":15,"id":167065,"video":false,"vote_average":7,"title":"The Making of Steven Spielberg's 'Jaws'","popularity":1.989,"poster_path":"/3S4XgNkP5Z1vazla23k4NhPdd2v.jpg","original_language":"en","original_title":"The Making of Steven Spielberg's 'Jaws'","genre_ids":[99],"backdrop_path":null,"adult":false,"overview":"A documentary on the making of one of the greatest films ever made. Filled with trivia, interviews from cast and crew and some never before seen footage.","release_date":"1995-11-28"},{"vote_count":11,"id":85512,"video":false,"vote_average":5,"title":"Jaws of Satan","popularity":1.034,"poster_path":"/wb6ErNz5DE68vMYFuNvcF17WM76.jpg","original_language":"en","original_title":"Jaws of Satan","genre_ids":[27,9648,53],"backdrop_path":"/vaCHGQS4Kl9679RySH4qlviMCbY.jpg","adult":false,"overview":"A preacher whose ancestors were Druids battles Satan, who has taken the form of a huge snake.","release_date":"1981-07-24"},{"vote_count":4,"id":97559,"video":false,"vote_average":4.9,"title":"Mako: The Jaws of Death","popularity":1.246,"poster_path":"/nqROqLDEE5f185mW4OGC18GffUN.jpg","original_language":"en","original_title":"Mako: The Jaws of Death","genre_ids":[27,53],"backdrop_path":null,"adult":false,"overview":"A man accidentally learns that he has a mystical connection with sharks, and is given a strange medallion by a shaman. Becoming more and more alienated from normal society, he develops an ability to communicate with sharks telepathically, setting out to destroy anybody who harms sharks. People enter into his strange world to exploit his weird passion, and he uses the animals to gain revenge on anybody who double crosses him.","release_date":"1976-07-01"},{"vote_count":0,"id":50963,"video":false,"vote_average":0,"title":"Deep Jaws","popularity":0.676,"poster_path":"/4lthj4OrIRtislto5oFNnTgBNuy.jpg","original_language":"en","original_title":"Deep Jaws","genre_ids":[35],"backdrop_path":null,"adult":false,"overview":"A bankrupt studio schemes the government to finance a sexploitation mermaids film. Casting couches thus join the already exploitive studio. Meanwhile, the Secretary of State arranges an affair with the studio head's buxom wife Henrietta.","release_date":"1976-01-01"},{"vote_count":0,"id":551694,"video":false,"vote_average":0,"title":"Jaws Finatics","popularity":0.6,"poster_path":null,"original_language":"en","original_title":"Jaws Finatics","genre_ids":[99],"backdrop_path":null,"adult":false,"overview":"A Full Length Documentary exploring Jaws fans and their love of the franchise Jaws. People from around the world explore their thoughts and expressions for the love of their favorite movie. This time it's personal... Stories by the fans for the fans","release_date":"2018-01-01"},{"vote_count":2,"id":204473,"video":false,"vote_average":9.5,"title":"Ghost Shark 2: Urban Jaws","popularity":0.923,"poster_path":"/uMQJMMpa1fd5QFgaRyplqGySHX6.jpg","original_language":"en","original_title":"Ghost Shark 2: Urban Jaws","genre_ids":[35,18,27,53],"backdrop_path":null,"adult":false,"overview":"When Ghost Shark returns to terrorize Auckland, Mayor Broody calls in an expert ghost shark hunter to protect the citizens and finally defeat the creature.","release_date":"2015-07-01"},{"vote_count":1,"id":266699,"video":false,"vote_average":5,"title":"In the Jaws of Life","popularity":0.6,"poster_path":"/5brO1x1bAr2rCUr5IuRxWmHKVxS.jpg","original_language":"hr","original_title":"U raljama života","genre_ids":[35],"backdrop_path":null,"adult":false,"overview":"Two parallel tales about two modern women. One is Štefica Cvek, average and lonely girl who desperately tries to find the man of her dreams. The other story is about a woman director who is making the movie about Štefica and has the same problem.","release_date":"1984-04-04"},{"vote_count":6,"id":84219,"video":false,"vote_average":7.8,"title":"Jaws: The Inside Story","popularity":0.6,"poster_path":"/durZDxQqJsde5YEeJBtI82VSWTy.jpg","original_language":"en","original_title":"Jaws: The Inside Story","genre_ids":[],"backdrop_path":null,"adult":false,"overview":"Steven Spielberg takes us behind the cameras for the making of a classic movie.","release_date":"2010-06-16"},{"vote_count":0,"id":536362,"video":false,"vote_average":0,"title":"Jaws on Netflix","popularity":0.6,"poster_path":"/fIM7isNHmXtOdWXH6PlLj5a0K4A.jpg","original_language":"en","original_title":"Jaws on Netflix","genre_ids":[35],"backdrop_path":null,"adult":false,"overview":"A fisherman gets bored on a slow day of fishing, then has his world get a little too real when he pulls up \"Jaws\" on his mobile device.",
+            "release_date":"2013-06-10"}]

@@ -14,10 +14,6 @@ class App extends Component {
   componentDidMount() {
     console.log("😎Hankflix👨‍🎤")
     API.getCollection()
-      .then(res => {
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
   }
   render() {
     return (

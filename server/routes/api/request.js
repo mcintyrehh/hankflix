@@ -3,7 +3,6 @@ const requestController = require("../../controllers/requestController");
 
 router.route("/")
     // matches with '/api/requests'
-    .post(requestController.create)
     .get(requestController.get);
 router.route('/:id')
     // matches with '/api/articles/:id'
