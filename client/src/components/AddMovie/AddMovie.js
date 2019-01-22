@@ -35,6 +35,7 @@ class AddMovie extends Component {
             console.log(res);
           })
           .catch(err => console.log(err));
+        this.setState({ monitored: "true"})
         console.log("yuuuuup");
         console.log(movieInfo);
     }

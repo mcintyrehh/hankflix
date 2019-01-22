@@ -29,6 +29,12 @@ module.exports = {
         .then(response => res.json(response))
         .catch(err => res.status(422).json(err));
     },
+    list: function(req, res) {
+      db.Request
+        .find()
+        .then(response => res.json(response))
+        .catch(err => res.status(422).json(err));
+    },
     remove: function(req, res) {
       db.Request
       .findById({ _id: req.params.id })
