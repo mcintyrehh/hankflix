@@ -26,8 +26,8 @@ class AddMovie extends Component {
     newRequest =(movieInfo) => {
         const req = {
             title: movieInfo.title,
-            imdb_id: movieInfo.imdbID,
-            poster_url: movieInfo.URL
+            imdb_id: movieInfo.imdb_id,
+            poster_url: movieInfo.poster_url
           }
           API.newRequest(req)
           .then(res => {
@@ -138,7 +138,7 @@ class AddMovie extends Component {
                                 </Button>
                             </Col>
                         </Row>
-                        <Row type="flex" justify="center">
+                        <Row className="cardBox" type="flex" justify="center">
                             <Col
                                 span={20}
                                 style={{ 

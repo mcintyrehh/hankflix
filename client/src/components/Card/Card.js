@@ -30,9 +30,8 @@ class MovieCard extends Component {
   createRequest = () => {
     const req = {
       title: this.state.title,
-      qualityProfileId: 1,
-      imdbID: this.state.imdbID,
-      URL: this.state.src,
+      imdb_id: this.state.imdbID,
+      poster_url: this.state.src,
     }
     this.props.newRequest(req);
   }
@@ -68,7 +67,7 @@ class MovieCard extends Component {
 
   render() {
     return (
-      <Col span={18} style={{ margin: 5, borderRadius: 10, border: "1px red solid" }}>
+      <Col span={18} style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
         <div className="card">
           <Col span={8}>
             <img alt={`pic for ${this.state.title}`} src={(this.state.src !== "https://image.tmdb.org/t/p/w500null" )? this.state.src : "/images/default.png"}/>

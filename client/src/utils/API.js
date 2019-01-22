@@ -10,7 +10,7 @@ export default {
   getRequest: function(id) {
     return axios.get("/api/requests" + id);
   },
-  checkID: function(query) {
+  checkID: function(query) { 
     return axios.get(`/api/requests/${query}`, query);
   },
   // Sends a new request to the server
