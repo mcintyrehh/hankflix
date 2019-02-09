@@ -1,4 +1,4 @@
-# hankflix
+# 😎Hankflix👨‍🎤
 A full MERN stack app for adding media in the public domain or digitizing physical collections to Plex servers using [Sonarr](https://github.com/Sonarr/Sonarr/wiki/API) and [Radarr](https://github.com/Radarr/Radarr/wiki/API) Dockers
 
 ## What needs to be configured first
