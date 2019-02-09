@@ -1,4 +1,4 @@
-import { Col, Button } from 'antd';
+import { Col, Button, notification } from 'antd';
 import './Card.css'
 import React, { Component } from 'react';
 import API from '../../utils/API';
@@ -11,21 +11,13 @@ class MovieCard extends Component {
       title: '',
       overview: '',
       year: '',
+      yearOnly: '',
       src: '',
       tmdbID: <Button shape="circle" loading />,
       monitored: <Button shape="circle" loading />,
       downloaded: <Button shape="circle" loading />,
       imdbID: ''
     }
-  }
-  favStar = (userId, articleId, articleType) => {
-    console.log(articleId);
-    console.log(articleType);
-    // 'fas' is a font awesome icon of a solid star, 'far' is a hollow star
-    // on clicking the star, the ternary operator switches states to the opposite
-    this.props.saved(userId, articleId, articleType)
-    const updateFav = (this.state.favIcon === 'fas') ? 'far' : 'fas';
-    this.setState({favIcon : updateFav});
   }
   createRequest = () => {
     const req = {
@@ -34,11 +26,18 @@ class MovieCard extends Component {
       poster_url: this.state.src,
     }
     this.props.newRequest(req);
+    this.setState({monitored: 'true'})
+    
+    notification.open({
+      message: '🧐Movie Monitored!👌',
+      description: `${this.state.title} (${this.state.yearOnly}) is now being monitored, if available it will begin downloading shortly!`
+    })
   }
   componentDidMount = (props) => {
     this.setState({ title: this.props.movie.title,
                     overview: this.props.movie.overview,
                     year: this.props.movie.release_date,
+                    yearOnly: this.props.movie.release_date.substring(0,4),
                     src: `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`,
                     tmdbID: this.props.movie.id });
     API.getID(this.props.movie.id)
@@ -80,7 +79,7 @@ class MovieCard extends Component {
               <div className="plot">{this.state.overview}</div>
               {/* ternary operators to set the css color based on whether they are downloaded or not */}
               <div>Currently monitored by server: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.monitored}</span></div>
-              <div>Downloaded: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.downloaded}</span></div>
+              <div>Downloaded: <span style={{color: this.state.downloaded === "true" ? "green" : "red"}}>{this.state.downloaded}</span></div>
               {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload">monitor</Button>)}
             </div> 
           </Col>
