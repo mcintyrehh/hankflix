@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from "./utils/API";
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Layout, Row, Col, Button, Form, Icon, Input } from 'antd';
+import { Layout, Row, Col, Button } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
 // import dotenv from "dotenv";
@@ -9,10 +9,6 @@ import { Layout, Row, Col, Button, Form, Icon, Input } from 'antd';
 import AddMovie from "./components/AddMovie";
 import HorizontalLogin from "./components/HorizontalLogin";
 import './App.css';
-
-function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
-}
 
 const { Header, Footer, Content } = Layout;
 class App extends Component {
@@ -27,27 +23,31 @@ class App extends Component {
   login = () => {
     this.setState({login: true})
   }
-
+  cancel = () => {
+    this.setState({login: false})
+  }
   render() {
     return (
       <Layout>
         <Header>
           <Row>
             <Col span={4}></Col>
-            <Col span={8}>
+            <Col span={7}>
               <div className="logo"><span role="img" aria-label="smiley emoji">😎</span>Hankflix<span role="img" aria-label="smiley emoji">👨‍🎤</span></div>
             </Col>
-            <Col span={8}>
+            <Col span={9}>
               <div className="login">
-              {this.state.login === false && (
+                {this.state.login === false && (
+                  <div>
+                    <Button className="login" type="primary" onClick={this.login}>Log In</Button>
+                    <Button className="register" type="primary">Register</Button>
+                  </div>
+                )}
+                {this.state.login === true && (
                 <div>
-                  <Button className="login" type="primary" onClick={this.login}>Log In</Button>
-                  <Button className="register" type="primary">Register</Button>
+                  <HorizontalLogin style={{marginTop: "5px", transition: 10, right: 0}} cancel={this.cancel}></HorizontalLogin>
                 </div>
-              )}
-              {this.state.login === true && (<HorizontalLogin style={{marginTop: "5px"}}></HorizontalLogin>
-
-              )}
+                )}
               </div>
             </Col>
             <Col span={4}></Col>

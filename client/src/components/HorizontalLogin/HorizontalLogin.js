@@ -30,7 +30,7 @@ import { Form, Icon, Input, Button } from 'antd';
       const userNameError = isFieldTouched('userName') && getFieldError('userName');
       const passwordError = isFieldTouched('password') && getFieldError('password');
       return (
-        <Form style={{marginTop: "10px" }}layout="inline" onSubmit={this.handleSubmit}>
+        <Form style={{marginTop: "12.5px" }}layout="inline" onSubmit={this.handleSubmit}>
           <Form.Item
             validateStatus={userNameError ? 'error' : ''}
             help={userNameError || ''}
@@ -48,7 +48,7 @@ import { Form, Icon, Input, Button } from 'antd';
             {getFieldDecorator('password', {
               rules: [{ required: true, message: 'Please input your Password!' }],
             })(
-              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+              <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="current-password" placeholder="Password" />
             )}
           </Form.Item>
           <Form.Item>
@@ -58,6 +58,12 @@ import { Form, Icon, Input, Button } from 'antd';
               disabled={hasErrors(getFieldsError())}
             >
               Log in
+            </Button>
+            <Button 
+              style={{marginLeft: 8}}
+              type="danger"
+              shape="circle"
+              onClick={this.props.cancel}><span role="img" aria-label="red 'x'">❌</span>
             </Button>
           </Form.Item>
         </Form>
