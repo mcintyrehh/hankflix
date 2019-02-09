@@ -63,6 +63,7 @@ import { Form, Icon, Input, Button } from 'antd';
               style={{marginLeft: 8}}
               type="danger"
               shape="circle"
+              htmlType="button"
               onClick={this.props.cancel}><span role="img" aria-label="red 'x'">❌</span>
             </Button>
           </Form.Item>
@@ -71,6 +72,6 @@ import { Form, Icon, Input, Button } from 'antd';
     }
   }
   
-  const WrappedHorizontalLoginForm = Form.create({ name: 'horizontal_login' })(HorizontalLoginForm);
+  const WrappedLogin = Form.create({ name: 'horizontal_login' })(HorizontalLoginForm);
   
-  export default  WrappedHorizontalLoginForm
+  export { WrappedLogin }
