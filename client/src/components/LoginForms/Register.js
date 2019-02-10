@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Tooltip, Icon, Button } from 'antd';
+import API from '../../utils/AUTH';
 import './Register.css';
     
   class RegistrationForm extends Component {
@@ -14,6 +15,7 @@ import './Register.css';
         if (!err) {
           console.log('Received values of form: ', values);
         }
+        API.signup(values);
       });
     }
   
