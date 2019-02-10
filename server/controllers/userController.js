@@ -13,19 +13,18 @@ module.exports = {
     }
   },
   register: (req, res) => {
-    const { firstName, lastName, username, password } = req.body;
+    const { email, password, phoneNumber } = req.body;
     // ADD VALIDATION
-    db.User.findOne({ 'username': username }, (err, userMatch) => {
+    db.User.findOne({ 'email': email }, (err, userMatch) => {
       if (userMatch) {
         return res.json({
-          error: `Sorry, already a user with the username: ${username}`
+          error: `Sorry, already a user with the email: ${email}`
         });
       }
       const newUser = new db.User({
-        'firstName': firstName,
-        'lastName': lastName,
-        'username': username,
-        'password': password
+        'email': email,
+        'password': password,
+        'phoneNumber': phoneNumber
       });
       newUser.save((err, savedUser) => {
         if (err) return res.json(err);
@@ -66,41 +65,6 @@ module.exports = {
       .then(dbUser => res.json({savedFake: dbUser.savedFake, savedReal: dbUser.savedReal, votedOn: dbUser.votedOn}))
       .catch(err => res.status(422).json(err));
   },
-  updateUserSavedFakeArticles: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$push: {savedFake: req.body.fakeArticleId}})
-      .then(() => res.json({message: "Article Saved"}))
-      .catch(err => res.status(422).json(err));
-  },
-  updateUserSavedRealArticles: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$push: {savedReal: req.body.realArticleId}})
-      .then(() => res.json({message: "Article Saved"}))
-      .catch(err => res.status(422).json(err));
-  },
-  removeUserSavedFakeArticles: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$pull: {savedFake: req.body.fakeArticleId}})
-      .then(() => res.json({message: "Article Saved"}))
-      .catch(err => res.status(422).json(err));
-  },
-  removeUserSavedRealArticles: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$pull: {savedReal: req.body.realArticleId}})
-      .then(() => res.json({message: "Article Saved"}))
-      .catch(err => res.status(422).json(err));
-  },
-  //referenced vote history, passing the article id
-  addToVotedOn: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$push: {votedOn: req.body.articleId }})
-      .then(() => res.json({message: "Vote Recorded"}))
-      .catch(err => res.status(422).json(err));
-  },
-  removeFromVotedOn: (req, res) => {
-    db.User
-      .findByIdAndUpdate(req.params.id, {$pull: {votedOn: req.body.articleId }})
-      .then(() => res.json({message: "Vote Recorded"}))
-      .catch(err => res.status(422).json(err));
-  }
+
+
 };

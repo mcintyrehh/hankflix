@@ -22,6 +22,7 @@
   "dependencies": {
     "antd": "^3.12.3",
     "axios": "^0.18.0",
+    "bcrypt": "^3.0.4",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",

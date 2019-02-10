@@ -5,17 +5,11 @@ mongoose.promise = Promise;
 
 // Define userSchema
 const userSchema = new Schema({
-	firstName: { type: String, unique: false },
-	lastName: { type: String, unique: false },
-  	username: { type: String, unique: false, required: false },
+	email: { type: String, unique: true },
 	password: { type: String, unique: false, required: false },
-	savedFake: [{ type: Schema.Types.ObjectId, ref: "FakeArticles"}],
-	savedReal: [{ type: Schema.Types.ObjectId, ref: "RealArticles"}],
-	votedOn: [{ type: Schema.Types.ObjectId }]
-	/* 
-		After minimum viable product is complete, we can discuss sending to database what user upvote/downvote to better tailer what the user will see on the site. 
-		Also need to store which articles the user upvote/downvote to make sure they aren't about to vote up or down multiple times, server-side
-	*/
+	phoneNumber: { type: Number, unique: false, required: false },
+	savedTV: [{ type: Schema.Types.ObjectId, ref: "SavedTV"}],
+	savedMovies: [{ type: Schema.Types.ObjectId, ref: "SavedMovies"}]
 });
 
 // Define schema methods

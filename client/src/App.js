@@ -29,6 +29,9 @@ class App extends Component {
   componentDidMount() {
     console.log("😎Hankflix👨‍🎤")
     API.getCollection()
+      .then(function(res, err) {
+        console.log(res)
+      })
   }
   login = () => {
     this.setState({login: true})
