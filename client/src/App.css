@@ -15,3 +15,6 @@
 .login {
   margin-right: 5pt;
 }
+.loggedIn {
+  color: white
+}

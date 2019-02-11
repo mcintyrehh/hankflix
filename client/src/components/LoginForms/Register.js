@@ -4,15 +4,21 @@ import API from '../../utils/AUTH';
 import './Register.css';
     
   class RegistrationForm extends Component {
-    state = {
-      confirmDirty: false,
-      autoCompleteResult: [],
-      error: '',
-      validateStatus: '',
-    };
+    constructor(props) {
+      super(props)
+      this.state = {
+        confirmDirty: false,
+        autoCompleteResult: [],
+        error: '',
+        validateStatus: '',
+      };
+    }
+
   
     handleSubmit = (e) => {
       e.preventDefault();
+      // hide the register popover
+      this.props.hide();
       this.setState({ validateStatus: '' })
       this.setState({ error: '' })
       this.props.form.validateFieldsAndScroll((err, values) => {
@@ -26,6 +32,8 @@ import './Register.css';
           }
           else {
             console.log(res)
+            this.props.login(res.data.email)
+
             if(res.data.error) {
               console.log(res.data.error)
               const errorMessage = res.data.error

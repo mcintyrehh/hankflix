@@ -23,7 +23,7 @@ class AddMovie extends Component {
         this.setState({searchResponse: json})
         
     }
-    newRequest =(movieInfo) => {
+    newRequest = (movieInfo) => {
         const req = {
             title: movieInfo.title,
             imdb_id: movieInfo.imdb_id,
