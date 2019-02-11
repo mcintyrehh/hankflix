@@ -1,5 +1,5 @@
 # 😎Hankflix👨‍🎤
-A full MERN stack app for adding media in the public domain or digitizing physical collections to Plex servers using [Sonarr](https://github.com/Sonarr/Sonarr/wiki/API) and [Radarr](https://github.com/Radarr/Radarr/wiki/API) Dockers
+A full MERN stack app for digitizing physical media collections using [Sonarr](https://github.com/Sonarr/Sonarr/wiki/API) and [Radarr](https://github.com/Radarr/Radarr/wiki/API) Dockers
 
 ## What needs to be configured first
 1. You will need Sonarr/Radarr installed and set up with the indexers/download client of your choosing
@@ -14,8 +14,8 @@ A full MERN stack app for adding media in the public domain or digitizing physic
         * In order for this validation to be succesfull, you will need to go into your router and open up two ports
             1. Forward port 80 --> 180
             2. Forward port 443 --> 1443
-    1. Configure a DNS tracker service to keep track of your dynamic WAN IP address (such as creating free subdomains with Duck DNS, or with your own domain name via adding cname records in your domains DNS settings)
-        * Set up subdomains for your docker containers, I used onraysonarr.duckdns.org and onrayradarr.duckdns.org, making my endpoints:
+    1. Configure a DNS tracker service to keep track of your dynamic WAN IP address (such as creating free subdomains with Duck DNS, or with your own domain name via adding cname records in your domain's DNS settings)
+        * Set up subdomains for your docker containers, this setup used onraysonarr.duckdns.org and onrayradarr.duckdns.org, making the endpoints:
             * Sonarr: https://onraysonarr.duckdns.org/api
             * Radarr: https://onrayradarr.duckdns.org/api
 1. For more information about this pre-setup, please see Spaceinvader One's great tutorial about this: https://youtu.be/I0lhZc25Sro
