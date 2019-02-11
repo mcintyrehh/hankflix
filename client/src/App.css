@@ -13,8 +13,12 @@
   text-align: right;
 }
 .login {
-  margin-right: 5pt;
+  margin-right: 5px;
+}
+.logout {
+  margin-left: 5px;
 }
 .loggedIn {
   color: white
 }
+

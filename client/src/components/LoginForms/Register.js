@@ -32,6 +32,7 @@ import './Register.css';
           }
           else {
             console.log(res)
+            API.login(res.data.email, res.data.password)
             this.props.login(res.data.email)
 
             if(res.data.error) {
@@ -41,7 +42,8 @@ import './Register.css';
               this.setState({ error: errorMessage })
             };
           }
-        });
+        })
+        ;
       });
     }
     resetValidate = () => {

@@ -33,7 +33,16 @@ class App extends Component {
   login = (userEmail) => {
     this.setState({
       user: userEmail,
-      loggedIn: true
+      loggedIn: true,
+      loggingIn: false
+    })
+  }
+  logout = () => {
+    AUTH.logout()
+    .then((res, err) => {
+      if (err) {console.log(err)}
+      else(console.log(res))
+      this.setState({loggedIn: false, user: null, loggingIn: false})
     })
   }
   handleVisibleChange = (visible) => {
@@ -83,7 +92,11 @@ class App extends Component {
             <Col span={13}>
               <div className="login">
                 {/* if the user is logged in, this will appear in the header */}
-                {(this.state.loggedIn === true) && (<div className="loggedIn">{this.state.user}, we've been expecting you</div>)}
+                {(this.state.loggedIn === true) && (
+                <div className="loggedIn">
+                  <span>{this.state.user}, we've been expecting you</span>
+                  <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
+                </div>)}
                 {/* if they aren't currently logged in, OR logging in, display the login/register buttons */}
                 {(this.state.loggingIn === false && this.state.loggedIn === false) && (
                   <div>
