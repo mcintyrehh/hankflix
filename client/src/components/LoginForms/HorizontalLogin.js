@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button } from 'antd';
+import AUTH from "../../utils/AUTH";
 
   
   function hasErrors(fieldsError) {
@@ -17,6 +18,13 @@ import { Form, Icon, Input, Button } from 'antd';
       this.props.form.validateFields((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
+          console.log(values.userName, values.password)
+          AUTH.login(values.userName, values.password)
+          .then((res, err) => {
+            if (err) {console.log(err)}
+            else {console.log(res)};
+          })
+          this.props.login(values.userName);
         }
       });
     }

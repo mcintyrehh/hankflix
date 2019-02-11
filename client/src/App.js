@@ -46,7 +46,7 @@ class App extends Component {
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
-					user: response.data.email
+					user: response.data.user.email
 				});
 			} else {
 				this.setState({
@@ -100,7 +100,7 @@ class App extends Component {
                 )}
                 {this.state.loggingIn === true && (
                 <div>
-                  <WrappedLogin style={{marginTop: "5px", transition: 10, right: 0}} cancel={this.cancel}></WrappedLogin>
+                  <WrappedLogin style={{marginTop: "5px", transition: 10, right: 0}} login={this.login} cancel={this.cancel}></WrappedLogin>
                 </div>
                 )}
               </div>
