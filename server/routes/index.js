@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 // Auth Routes
-router.use('./auth', authRoutes);
+router.use('/auth', authRoutes);
 
 //API Routes
 router.use("/api", apiRoutes);

@@ -7,18 +7,39 @@ import './Register.css';
     state = {
       confirmDirty: false,
       autoCompleteResult: [],
+      error: '',
+      validateStatus: '',
     };
   
     handleSubmit = (e) => {
       e.preventDefault();
+      this.setState({ validateStatus: '' })
+      this.setState({ error: '' })
       this.props.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           console.log('Received values of form: ', values);
         }
-        API.signup(values);
+        API.signup(values)
+        .then((res, err) => {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            console.log(res)
+            if(res.data.error) {
+              console.log(res.data.error)
+              const errorMessage = res.data.error
+              this.setState({ validateStatus: "error" })
+              this.setState({ error: errorMessage })
+            };
+          }
+        });
       });
     }
-  
+    resetValidate = () => {
+      this.setState({ validateStatus: '' })
+      this.setState({ error: '' })
+    }
     handleConfirmBlur = (e) => {
       const value = e.target.value;
       this.setState({ confirmDirty: this.state.confirmDirty || !!value });
@@ -27,7 +48,7 @@ import './Register.css';
     compareToFirstPassword = (rule, value, callback) => {
       const form = this.props.form;
       if (value && value !== form.getFieldValue('password')) {
-        callback('👯‍♀️Passwords must match!👯‍♀️');
+        callback('👯‍Passwords must match!👯‍');
       } else {
         callback();
       }
@@ -39,16 +60,6 @@ import './Register.css';
         form.validateFields(['confirm'], { force: true });
       }
       callback();
-    }
-  
-    handleWebsiteChange = (value) => {
-      let autoCompleteResult;
-      if (!value) {
-        autoCompleteResult = [];
-      } else {
-        autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-      }
-      this.setState({ autoCompleteResult });
     }
   
     render() {
@@ -86,7 +97,8 @@ import './Register.css';
           <Form.Item
             {...formItemLayout}
             label="E-mail"
-            style={{color: "white"}}
+            validateStatus={this.state.validateStatus}
+            help={this.state.error}
           >
             {getFieldDecorator('email', {
               rules: [{
@@ -95,7 +107,7 @@ import './Register.css';
                 required: true, message: 'Please input your E-mail!',
               }],
             })(
-              <Input />
+              <Input onChange={this.resetValidate}/>
             )}
           </Form.Item>
           <Form.Item
@@ -138,7 +150,7 @@ import './Register.css';
               )}
           >
             {getFieldDecorator('phone', {
-              rules: [{ required: true, message: 'Please input your phone number!' }],
+              rules: [{ required: false, message: 'Please input your phone number!' }],
             })(
               <Input style={{ width: '100%' }} />
             )}
