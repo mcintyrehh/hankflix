@@ -80,10 +80,9 @@ class AddMovie extends Component {
     }
     render() {
         return (
-            <div className="container">
-                <Row type="flex" justify="center">
-                    <Col span={16}
-                        className="searchBox">
+            // <div className="container">
+            //     <Row type="flex" justify="center">
+                    <Col md={16} sm={24} className="searchBox">
                         <div className="searchHeadline">IMDb Movie Search</div>
                         <Row type="flex" justify="center">
                             <Col 
@@ -139,13 +138,10 @@ class AddMovie extends Component {
                                 </div>
                                 {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                             </Col>
-                    </Row>
+                        </Row>
                     </Col>
-                </Row>
-
-   
-
-            </div>
+            //     </Row>
+            // </div>
 
         )
     }

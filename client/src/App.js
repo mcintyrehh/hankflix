@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import API from "./utils/API";
 import AUTH from "./utils/AUTH";
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu } from 'antd';
+import { Route, Switch, Redirect } from "react-router-dom";
+import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu, Tabs } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
 // import dotenv from "dotenv";
@@ -12,6 +12,7 @@ import { WrappedLogin, Register } from "./components/LoginForms";
 import './App.css';
 
 const { Header, Footer, Content } = Layout;
+const TabPane =Tabs.TabPane;
 class App extends Component {
   constructor() {
     super();
@@ -105,7 +106,7 @@ class App extends Component {
       <Layout>
         <Header>
           <Row>
-            <Col xs={{ span: 17, offset: 1 }}  sm={{ span: 8, offset: 4}} md={{ span:6, offset: 4}}>
+            <Col xs={{ span: 17, offset: 1 }}  sm={{ span: 8, offset: 4}} md={{ span:6, offset: 2}}>
               <a href="/" className="logo">
                 <span className="emojis" role="img" aria-label="smiley emoji">😎</span>
                 Hankflix
@@ -117,7 +118,7 @@ class App extends Component {
                 {/* if the user is logged in, this will appear in the header */}
                 {(this.state.loggedIn === true) && (
                   <div className="loggedInText">
-                    <span>{this.state.user}, we've been expecting you</span>
+                    <span style={{color: "white"}}>{this.state.user}, we've been expecting you</span>
                     <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
                   </div>)
                 }
@@ -145,46 +146,64 @@ class App extends Component {
               </div>
             </Col>
             <Col xs={6} sm={6} md={0} align="center">
+            {(this.state.loggedIn === true) && (
+                <div className="loggedInText">
+                  <span style={{color: "white"}}>{this.state.user}</span>
+                  <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
+                </div>)
+            }
+            {(this.state.loggedIn === false ) && (
               <Dropdown 
-                onVisibleChange={this.handleVisibleChangeMenuDropdown}
-                visible={this.state.visibleMenu}
-                overlay={
-                  <Menu>
-                      <Menu.Item key="1"><Icon type="user" />
-                      <Popover
-                        content={<WrappedLogin hide={this.hide} login={this.login}></WrappedLogin>}
-                        title="Login"
-                        
-                        popupAlign={{ offset: [0, -50] }}
-                        trigger="hover"
-                        visible={this.state.visibleLoginXS}
-                        onVisibleChange={this.handleVisibleChangeLoginXS}>
-                        <Button className="loginSmall" type="primary">Log In</Button>
-                      </Popover>
-                      </Menu.Item>
-                      <Menu.Item key="2"><Icon type="form" />
-                        <Popover
-                          content={<Register hide={this.hide} login={this.login}></Register>}
-                          title="Register"
-                          trigger="hover"
-                          visible={this.state.visibleRegisterPop}
-                          onVisibleChange={this.handleVisibleChangeRegisterPop}>
-                          <Button className="register" type="primary">Register</Button>
-                        </Popover>
-                      </Menu.Item>
+              onVisibleChange={this.handleVisibleChangeMenuDropdown}
+              visible={this.state.visibleMenu}
+              overlay={
+                <Menu>
+                    <Menu.Item key="1"><Icon type="user" />
+                    <Popover
+                      content={<WrappedLogin hide={this.hide} login={this.login}></WrappedLogin>}
+                      title="Login"
                       
-                  </Menu>
-              }>
-                <Button type="primary" style={{ marginLeft: 8 }}>
-                  <Icon type="down" />
-                </Button>
-              </Dropdown>
+                      popupAlign={{ offset: [0, -50] }}
+                      trigger="hover"
+                      visible={this.state.visibleLoginXS}
+                      onVisibleChange={this.handleVisibleChangeLoginXS}>
+                      <Button className="loginSmall" type="primary">Log In</Button>
+                    </Popover>
+                    </Menu.Item>
+                    <Menu.Item key="2"><Icon type="form" />
+                      <Popover
+                        content={<Register hide={this.hide} login={this.login}></Register>}
+                        title="Register"
+                        trigger="hover"
+                        visible={this.state.visibleRegisterPop}
+                        onVisibleChange={this.handleVisibleChangeRegisterPop}>
+                        <Button className="register" type="primary">Register</Button>
+                      </Popover>
+                    </Menu.Item>
+                </Menu>
+            }>
+              <Button type="primary" style={{ marginLeft: 8 }}>
+                <Icon type="down" />
+              </Button>
+            </Dropdown>
+
+            )}
+
             </Col>
+
           </Row>
           
         </Header>
         <Content>
-          <AddMovie></AddMovie>
+          <div className="container">
+            <Row type="flex" justify="center">
+              <Switch>
+                <Route exact path="/"><AddMovie/></Route>
+                <Route exact path="/tv"></Route>
+              </Switch>
+
+            </Row>
+          </div>
         </Content>
         <Footer style={{ backgroundColor: '#03152a' }}>Footer</Footer>
       </Layout>

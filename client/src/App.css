@@ -34,9 +34,6 @@
       /* width: 100%;
       justify-content: center; */
   }
-  .loggedInText {
-    visibility: hidden;
-  }
   .movieCard {
     width: 100%;
     justify-content: center;
