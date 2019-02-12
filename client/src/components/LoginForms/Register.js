@@ -126,7 +126,7 @@ import './Register.css';
                 required: true, message: 'Please input your E-mail!',
               }],
             })(
-              <Input onChange={this.resetValidate}/>
+              <Input placeholder="mikejones@gmail.com" onChange={this.resetValidate}/>
             )}
           </Form.Item>
           <Form.Item
@@ -154,7 +154,7 @@ import './Register.css';
                 validator: this.compareToFirstPassword,
               }],
             })(
-              <Input type="password" onBlur={this.handleConfirmBlur} />
+              <Input type="password" placeholder="password" onBlur={this.handleConfirmBlur} />
             )}
           </Form.Item>   
           <Form.Item
@@ -171,7 +171,7 @@ import './Register.css';
             {getFieldDecorator('phone', {
               rules: [{ required: false, message: 'Please input your phone number!' }],
             })(
-              <Input style={{ width: '100%' }} />
+              <Input style={{ width: '100%' }} placeholder="2813308004"/>
             )}
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>

@@ -20,7 +20,7 @@ class App extends Component {
       user: null,
       loggingIn: false,
       register: false,
-      visable: false,
+      visible: false,
       visibleLoginMenu: false,
     }
   }
@@ -59,7 +59,7 @@ class App extends Component {
   handleVisibleChangeMenu = (visibleLoginMenu) => {
     this.setState({ visibleLoginMenu })
   }
-  handleVisibleChange = (flag) => {
+  handleVisibleChangeMenu = (flag) => {
     this.setState({ visibleMenu: flag });
   }
   
