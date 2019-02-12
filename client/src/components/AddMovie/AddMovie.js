@@ -7,6 +7,7 @@ import { MovieCard } from '../Card'
 
 // const Search = Input.Search;
 const json = require('./data.json');
+const Search = Input.Search;
 class AddMovie extends Component {
     constructor() {
         super();
@@ -94,22 +95,15 @@ class AddMovie extends Component {
                         </Row>
                         <Row type="flex" justify="center">
                             <Col className="searchLine" span={10}>
-                                <span style={{marginRight: 5, textAlign: "center"}}> Title: </span>
-                                <Input
-                                    type="text"
+                                <Search
                                     placeholder="Jaws" 
-                                    style={{width: 200}}
+                                    enterButton
                                     name="queryTitle"
                                     value={this.state.queryTitle}
-                                    onChange={this.handleChange}>
-                                </Input>
-                                <Button
-                                type="primary" 
-                                icon="search" 
-                                style={{margin: 10}}
-                                loading={this.state.iconLoadingTitle}
-                                onClick={this.searchByYear}>
-                                </Button>
+                                    onChange={this.handleChange}
+                                    loading={this.state.iconLoadingTitle}
+                                    onSearch={this.searchByYear}>
+                                </Search>
                             </Col>                     
                         </Row>
                         <Row type="flex" justify="center">
@@ -118,25 +112,19 @@ class AddMovie extends Component {
                             style={{
                                 textAlign: "center", 
                                 borderBottom: "1px white solid",
-                                margin: 10}}>By ID</Col>
+                                margin: 10}}>By IMDb ID</Col>
                         </Row>
                         <Row type="flex" justify="center">
                             <Col className="searchLine" span={10}>
-                                <span style={{marginRight: 5, textAlign: "center"}}> IMDb ID: </span>
-                                <Input
+                                <Search
                                     placeholder="tt0073195" 
-                                    style={{width: 200}}
                                     name="queryID"
+                                    enterButton
                                     value={this.state.queryID}
-                                    onChange={this.handleChange}>
-                                </Input>
-                                <Button
-                                type="primary" 
-                                icon="search" 
-                                style={{margin: 10}}
-                                loading={this.state.iconLoadingID}
-                                onClick={this.searchByID}>
-                                </Button>
+                                    onChange={this.handleChange}
+                                    loading={this.state.iconLoadingID}
+                                    onSearch={this.searchById}>
+                                </Search>
                             </Col>
                         </Row>
                         <Row className="cardBox" type="flex" justify="center">
