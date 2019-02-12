@@ -5,13 +5,9 @@
   width: 100vw;
   background-image: url("/images/ocean.jpg");
 }
-
 .logo {
   font-size: 20pt;
   color: whitesmoke;
-}
-.ant-design-header {
-  height: auto;
 }
 .login {
   text-align: right;
@@ -32,8 +28,19 @@
   visibility: hidden;
 } */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   /* For mobile phones: */
-
+  [class*="col-"] {
+      /* width: 100%;
+      justify-content: center; */
+  }
+  .loggedInText {
+    visibility: hidden;
+  }
+  .movieCard {
+    width: 100%;
+    justify-content: center;
+  }
+ 
 }
 

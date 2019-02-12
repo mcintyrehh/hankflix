@@ -67,12 +67,12 @@ class MovieCard extends Component {
 
   render() {
     return (
-      <Col span={18} style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
-        <div className="card">
-          <Col span={8}>
+      <Col span={18} className="movieCard" style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
+        <div className="card movieCard">
+          <Col span={8} className="movieCard">
             <img alt={`pic for ${this.state.title}`} src={(this.state.src !== "https://image.tmdb.org/t/p/w500null" )? this.state.src : "/images/default.png"}/>
           </Col>
-          <Col span={16}>
+          <Col span={16} className="movieCard">
             <div className="overlay">
               <div className="title">{this.state.title}</div>
               <div className="year">{this.state.year}</div>

@@ -140,8 +140,17 @@ class App extends Component {
                 visible={this.state.visibleMenu}
                 overlay={
                   <Menu>
-                      <Menu.Item key="1"><Icon type="user" />1st menu item</Menu.Item>
-                      <Menu.Item key="2"><Icon type="form primary" />
+                      <Menu.Item key="1"><Icon type="user" />
+                      <Popover
+                        content={<WrappedLogin login={this.login}></WrappedLogin>}
+                        title="Login"
+                        trigger="click"
+                        visible={this.state.visibleLoginXS}
+                        onVisibleChange={this.handleVisibleChangeLoginXS}>
+                        <Button className="loginSmall" type="primary">Log In</Button>
+                      </Popover>
+                      </Menu.Item>
+                      <Menu.Item key="2"><Icon type="form" />
                         <Popover
                           content={<Register hide={this.hide} login={this.login}></Register>}
                           title="Register"
@@ -158,14 +167,6 @@ class App extends Component {
                   <Icon type="down" />
                 </Button>
               </Dropdown>
-              <Popover
-                content={<WrappedLogin login={this.login}></WrappedLogin>}
-                title="Login"
-                trigger="click"
-                visible={this.state.visibleLoginXS}
-                onVisibleChange={this.handleVisibleChangeLoginXS}>
-                <Button className="loginSmall" type="primary">Log In</Button>
-              </Popover>
             </Col>
           </Row>
           
