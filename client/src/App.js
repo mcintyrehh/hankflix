@@ -154,6 +154,8 @@ class App extends Component {
                       <Popover
                         content={<WrappedLogin hide={this.hide} login={this.login}></WrappedLogin>}
                         title="Login"
+                        
+                        popupAlign={{ offset: [0, -50] }}
                         trigger="hover"
                         visible={this.state.visibleLoginXS}
                         onVisibleChange={this.handleVisibleChangeLoginXS}>
