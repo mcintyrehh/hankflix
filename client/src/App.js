@@ -21,7 +21,9 @@ class App extends Component {
       loggingIn: false,
       register: false,
       visible: false,
+      visibleMenu: false,
       visibleLoginMenu: false,
+      visibleRegisterPop: false,
     }
   }
   
@@ -30,7 +32,8 @@ class App extends Component {
     this.setState({
       visible: false,
       visibleLogin: false,
-      loggedIn: false
+      loggedIn: false,
+      visibleLoginXS: false,
     })
   }
   login = (userEmail) => {
@@ -54,10 +57,17 @@ class App extends Component {
     this.setState({ visibleLogin })
   }
   handleVisibleChangeLoginXS = (visibleLoginXS) => {
+    console.log(visibleLoginXS)
     this.setState({ visibleLoginXS })
   }
   handleVisibleChangeMenu = (visibleLoginMenu) => {
     this.setState({ visibleLoginMenu })
+  }
+  handleVisibleChangeMenuDropdown = (visibleMenu) => {
+    this.setState({ visibleMenu})
+  }
+  handleVisibleChangeRegisterPop = (visibleRegisterPop) => {
+    this.setState({ visibleRegisterPop })
   }
   handleVisibleChangeMenu = (flag) => {
     this.setState({ visibleMenu: flag });
@@ -136,15 +146,15 @@ class App extends Component {
             </Col>
             <Col xs={6} sm={6} md={0} align="center">
               <Dropdown 
-                onVisibleChange={this.handleVisibleChange}
+                onVisibleChange={this.handleVisibleChangeMenuDropdown}
                 visible={this.state.visibleMenu}
                 overlay={
                   <Menu>
                       <Menu.Item key="1"><Icon type="user" />
                       <Popover
-                        content={<WrappedLogin login={this.login}></WrappedLogin>}
+                        content={<WrappedLogin hide={this.hide} login={this.login}></WrappedLogin>}
                         title="Login"
-                        trigger="click"
+                        trigger="hover"
                         visible={this.state.visibleLoginXS}
                         onVisibleChange={this.handleVisibleChangeLoginXS}>
                         <Button className="loginSmall" type="primary">Log In</Button>
@@ -154,9 +164,9 @@ class App extends Component {
                         <Popover
                           content={<Register hide={this.hide} login={this.login}></Register>}
                           title="Register"
-                          trigger="click"
-                          visible={this.state.visibleLoginMenu}
-                          onVisibleChange={this.handleVisibleChangeMenu}>
+                          trigger="hover"
+                          visible={this.state.visibleRegisterPop}
+                          onVisibleChange={this.handleVisibleChangeRegisterPop}>
                           <Button className="register" type="primary">Register</Button>
                         </Popover>
                       </Menu.Item>
