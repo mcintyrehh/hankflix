@@ -18,7 +18,7 @@ import './Register.css';
     handleSubmit = (e) => {
       e.preventDefault();
       // hide the register popover
-      this.props.hide();
+      
       this.setState({ validateStatus: '' })
       this.setState({ error: '' })
       this.props.form.validateFieldsAndScroll((err, values) => {
@@ -27,20 +27,29 @@ import './Register.css';
         }
         API.signup(values)
         .then((res, err) => {
+          console.log(res);
           if (err) {
             console.log(err);
           }
           else {
-            console.log(res)
-            API.login(res.data.email, res.data.password)
-            this.props.login(res.data.email)
-
             if(res.data.error) {
               console.log(res.data.error)
               const errorMessage = res.data.error
               this.setState({ validateStatus: "error" })
               this.setState({ error: errorMessage })
-            };
+              return;
+            }
+            else {
+              console.log(res)
+              API.login(values.email, values.password)
+              .then((res, err) => {
+                if(err) {console.log(err)}
+                else(console.log(res))
+                console.log(res)
+                this.props.login(res.email)
+                this.props.hide();
+              })
+            }
           }
         })
         ;
@@ -131,7 +140,7 @@ import './Register.css';
                 validator: this.validateToNextPassword,
               }],
             })(
-              <Input type="password" />
+              <Input type="password" placeholder="password"/>
             )}
           </Form.Item>
           <Form.Item

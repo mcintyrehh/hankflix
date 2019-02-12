@@ -38,7 +38,7 @@ import AUTH from "../../utils/AUTH";
       const userNameError = isFieldTouched('userName') && getFieldError('userName');
       const passwordError = isFieldTouched('password') && getFieldError('password');
       return (
-        <Form style={{marginTop: "12.5px" }}layout="inline" onSubmit={this.handleSubmit}>
+        <Form style={{marginTop: "12.5px" }} layout="vertical" onSubmit={this.handleSubmit}>
           <Form.Item
             validateStatus={userNameError ? 'error' : ''}
             help={userNameError || ''}
@@ -66,13 +66,6 @@ import AUTH from "../../utils/AUTH";
               disabled={hasErrors(getFieldsError())}
             >
               Log in
-            </Button>
-            <Button 
-              style={{marginLeft: 8}}
-              type="danger"
-              shape="circle"
-              htmlType="button"
-              onClick={this.props.cancel}><span role="img" aria-label="red 'x'">❌</span>
             </Button>
           </Form.Item>
         </Form>

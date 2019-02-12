@@ -5,9 +5,13 @@
   width: 100vw;
   background-image: url("/images/ocean.jpg");
 }
+
 .logo {
   font-size: 20pt;
   color: whitesmoke;
+}
+.ant-design-header {
+  height: auto;
 }
 .login {
   text-align: right;
@@ -20,5 +24,16 @@
 }
 .loggedIn {
   color: white
+}
+.loginXS {
+  visibility: hidden;
+}
+/* .registerXS {
+  visibility: hidden;
+} */
+
+@media only screen and (max-width: 600px) {
+  /* For mobile phones: */
+
 }
 
