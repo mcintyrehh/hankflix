@@ -1,8 +1,11 @@
 const router = require("express").Router();
-const requestRoutes = require("./request");
-const sonarrRoutes = require("./sonarr");
+const movieRoutes = require("./movie");
+const televisionRoutes = require("./television");
 
 // API routes
-router.use("/requests", requestRoutes);
-router.use("/sonarr", sonarrRoutes);
+// will serve routes for /api/movie
+router.use("/movie", movieRoutes);
+// will serve routes for /api/television
+router.use("/television", televisionRoutes);
+
 module.exports = router;

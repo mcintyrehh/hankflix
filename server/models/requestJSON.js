@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const requestSchema = new Schema({
+const movieRequestSchema = new Schema({
     title: {
         type: String,
         required: true
@@ -16,6 +16,6 @@ const requestSchema = new Schema({
 
 });
 
-const Request = mongoose.model("Request", requestSchema);
+const MovieRequestJSON = mongoose.model("MovieRequestJSON", movieRequestSchema);
 
-module.exports = Request;
+module.exports = MovieRequestJSON;

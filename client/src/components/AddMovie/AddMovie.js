@@ -77,6 +77,8 @@ class AddMovie extends Component {
     searchByID = () => {
         this.setState({ iconLoadingID: true })
         console.log(`IMDb ID: ${this.state.queryID}`)
+        const imdbID = this.state.queryID;
+        
     }
     render() {
         return (

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const savedTVSchema = new Schema ({
+const newTelevisionSchema = new Schema ({
     tvdbId: {
         type: String,
         required: true
@@ -33,5 +33,5 @@ const savedTVSchema = new Schema ({
     }
 });
 
-const SavedTV = mongoose.model("SavedTV", savedTVSchema);
-module.exports = SavedTV;
+const TVRequest = mongoose.model("TVRequest", savedTVSchema);
+module.exports = TVRequest;

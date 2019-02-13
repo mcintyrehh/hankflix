@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const savedTVSchema = new Schema ({
+const newMovieSchema = new Schema ({
     title: {
         type: String, 
         required: true
@@ -45,5 +45,5 @@ const savedTVSchema = new Schema ({
     }
 });
 
-const SavedTV = mongoose.model("SavedTV", savedTVSchema);
-module.exports = SavedTV;
+const MovieRequest = mongoose.model("MovieRequest", newMovieSchema);
+module.exports = MovieRequest;

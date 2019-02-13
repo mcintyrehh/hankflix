@@ -1,5 +1,5 @@
 module.exports = {
-    Request: require("./request"),
+    Request: require("./requestJSON"),
     User: require("./user"),
     Collection: require("./collection")
   };
