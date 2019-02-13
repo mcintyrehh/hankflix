@@ -118,7 +118,7 @@ class App extends Component {
                 {/* if the user is logged in, this will appear in the header */}
                 {(this.state.loggedIn === true) && (
                   <div className="loggedInText">
-                    <span style={{color: "white"}}>{this.state.user}, we've been expecting you</span>
+                    <span style={{ color: "white" }}>{this.state.user}, we've been expecting you</span>
                     <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
                   </div>)
                 }
