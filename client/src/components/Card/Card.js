@@ -2,6 +2,7 @@ import { Col, Button, notification } from 'antd';
 import './Card.css'
 import React, { Component } from 'react';
 import API from '../../utils/API';
+import { Collection } from 'mongoose';
 // import { Link } from 'react-router-dom';
 
 class MovieCard extends Component {
@@ -43,22 +44,19 @@ class MovieCard extends Component {
                     tmdbID: this.props.movie.id });
     API.getID(this.props.movie.id)
       .then(res => {
+        // console.log(res.data.imdb_id)
         const imdb_id = res.data.imdb_id;
         this.setState({ imdbID: imdb_id})
-        API.checkID(imdb_id)
+
+// This sents a get request to /api/movies/:id using  the imdbID from the function above
+// this is routed to movieController.checkStatus, which checks the ID against the Radarr Collection
+// * if matched it returns the match and monitored/downloaded states are set from those values
+// * if no match, monitored: "false", downloaded: "false" is returned 
+      API.getRequest(imdb_id)
         .then(res => {
-          if (res.data.length > 0) {
-            const movie = res.data[0]
+            const movie = res.data
             this.setState({monitored: movie.monitored})
             this.setState({ downloaded: movie.downloaded})
-            // this.setState({ year: movie.year})
-            console.log(res.data);
-          }
-          else {
-            this.setState({ 
-              monitored: 'false',
-              downloaded: 'false'})
-          }
         })
         .catch(err => console.log(err));
     })

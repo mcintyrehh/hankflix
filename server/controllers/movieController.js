@@ -7,7 +7,7 @@ module.exports = {
     create: function(req, res) {
       const imdbID = req.body.imdb_id;
       const title = req.body.title;
-      console.log(imdbID);
+      // console.log(imdbID);
       db.Request.findOne({ 'imdb_id': imdbID }, (err, requestMatch) => {
         if (requestMatch) {
           return res.json({
@@ -46,6 +46,20 @@ module.exports = {
         .catch(function(error) {
           console.log(error);
         })
+    },
+    statusCheck: function(req, res) {
+      console.log(req.params.id)
+      db.Collection.findOne({ 'imdb_id': req.params.id}, (err, match) => {
+        if (match) {
+          return res.json(match);
+        }
+        else {
+          return res.json({
+            monitored: "false",
+            downloaded: "false"
+          });
+        }
+      })
     },
     get: function(req, res) {
       axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.SONARR_API}`)

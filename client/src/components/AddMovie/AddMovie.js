@@ -15,8 +15,8 @@ class AddMovie extends Component {
             queryTitle: '',
             queryYear: '',
             queryID: '',
-            iconLoadingTitle: false,
-            iconLoadingID: false,
+            iconLoadingTitle: "false",
+            iconLoadingID: "false",
             searchResponse: []
         }
     }
@@ -48,7 +48,7 @@ class AddMovie extends Component {
     }
     searchByYear = () => {
         let self = this;
-        this.setState({ iconLoadingTitle: true })
+        this.setState({ iconLoadingTitle: "true" })
         console.log(`Title: ${this.state.queryTitle} Year: ${this.state.queryYear}`) 
         const query = this.state.queryTitle;
         API.search(query)
@@ -56,7 +56,7 @@ class AddMovie extends Component {
                 console.log(response.data.results);
                 const queryData = response.data.results;
                 self.setState({ searchResponse: queryData });
-                self.setState({ iconLoadingTitle: false });
+                self.setState({ iconLoadingTitle: "false" });
 
             })
             .catch(function(err) {
