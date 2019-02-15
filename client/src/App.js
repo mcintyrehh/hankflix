@@ -199,7 +199,7 @@ class App extends Component {
             <Row type="flex" justify="center">
               <Switch>
                 <Route exact path="/"><AddMovie/></Route>
-                <Route exact path="/television"><AddTelevision/></Route>
+                <Route path="/television"><AddTelevision/></Route>
               </Switch>
 
             </Row>
