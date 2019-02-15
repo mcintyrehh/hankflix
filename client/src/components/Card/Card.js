@@ -2,7 +2,6 @@ import { Col, Button, notification } from 'antd';
 import './Card.css'
 import React, { Component } from 'react';
 import API from '../../utils/API';
-import { Collection } from 'mongoose';
 // import { Link } from 'react-router-dom';
 
 class MovieCard extends Component {

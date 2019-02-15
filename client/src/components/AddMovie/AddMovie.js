@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Input, Button } from 'antd';
+import { Col, Row, Input, } from 'antd';
 import API from "../../utils/API";
 // import axios from 'axios';
 import './AddMovie.css';
@@ -77,7 +77,7 @@ class AddMovie extends Component {
     searchByID = () => {
         this.setState({ iconLoadingID: true })
         console.log(`IMDb ID: ${this.state.queryID}`)
-        const imdbID = this.state.queryID;
+        // const imdbID = this.state.queryID;
         
     }
     render() {

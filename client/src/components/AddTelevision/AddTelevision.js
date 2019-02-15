@@ -3,7 +3,7 @@ import { Col, Row, Input } from 'antd';
 import API from "../../utils/API";
 // import axios from 'axios';
 import './AddTelevision.css';
-import { MovieCard } from '../Card'
+// import { MovieCard } from '../Card'
 
 // const Search = Input.Search;
 const json = require('./data.json');
@@ -22,24 +22,29 @@ class AddTelevision extends Component {
     }
     componentDidMount = () => {
         this.setState({searchResponse: json})
-        
-    }
-    newRequest = (movieInfo) => {
-        const req = {
-            title: movieInfo.title,
-            imdb_id: movieInfo.imdb_id,
-            poster_url: movieInfo.poster_url
-          }
-          API.newRequest(req)
-          .then(res => {
-            console.log("test")
-            console.log(res);
+        console.log("in tv");
+        // on loading /television, a get request to /api/television/collection returns all monitored shows
+        API.getTVCollection()
+        .then(function(res, err) {
+            console.log(res)
           })
-          .catch(err => console.log(err));
-        this.setState({ monitored: "true"})
-        console.log("yuuuuup");
-        console.log(movieInfo);
     }
+    // newRequest = (movieInfo) => {
+    //     const req = {
+    //         title: movieInfo.title,
+    //         imdb_id: movieInfo.imdb_id,
+    //         poster_url: movieInfo.poster_url
+    //       }
+    //       API.newRequest(req)
+    //       .then(res => {
+    //         console.log("test")
+    //         console.log(res);
+    //       })
+    //       .catch(err => console.log(err));
+    //     this.setState({ monitored: "true"})
+    //     console.log("yuuuuup");
+    //     console.log(movieInfo);
+    // }
     handleChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -77,7 +82,7 @@ class AddTelevision extends Component {
     searchByID = () => {
         this.setState({ iconLoadingID: true })
         console.log(`IMDb ID: ${this.state.queryID}`)
-        const imdbID = this.state.queryID;
+        // const imdbID = this.state.queryID;
         
     }
     render() {
@@ -136,7 +141,7 @@ class AddTelevision extends Component {
                                 marginBottom: 20,
                                 textAlign: "center"}}>
                                 <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                                    {this.state.searchResponse.map(movie=><MovieCard key={movie.id} newRequest={this.newRequest} movie={movie}/>)}
+                                    {/* {this.state.searchResponse.map(movie=><MovieCard key={movie.id} newRequest={this.newRequest} movie={movie}/>)} */}
                                 </div>
                                 {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                             </Col>

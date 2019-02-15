@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const newTelevisionSchema = new Schema ({
+const televisionSchema = new Schema ({
     tvdbId: {
         type: String,
         required: true
@@ -27,11 +27,27 @@ const newTelevisionSchema = new Schema ({
         type: Array, 
         required: true
     },
+    monitored: {
+        type: Boolean,
+    },
+    addOptions: {
+        type: Boolean
+    },
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+    totalEpisodeCount: {
+        type: Number
+    },
+    episodeCount: {
+        type: Number
+    },
+    seasonCount: {
+        type: Number,
+        required: false
     }
 });
 
-const TVRequest = mongoose.model("TVRequest", savedTVSchema);
-module.exports = TVRequest;
+const TVShow = mongoose.model("TVShow", televisionSchema);
+module.exports = TVShow;

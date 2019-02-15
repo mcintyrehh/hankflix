@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import API from "./utils/API";
 import AUTH from "./utils/AUTH";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu, Tabs } from 'antd';
+import { Route, Switch,  } from "react-router-dom";
+import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
 // import dotenv from "dotenv";
 // import axios from 'axios';
 import AddMovie from "./components/AddMovie";
+import AddTelevision from "./components/AddTelevision";
 import { WrappedLogin, Register } from "./components/LoginForms";
 import './App.css';
 
 const { Header, Footer, Content } = Layout;
-const TabPane =Tabs.TabPane;
 class App extends Component {
   constructor() {
     super();
@@ -199,7 +199,7 @@ class App extends Component {
             <Row type="flex" justify="center">
               <Switch>
                 <Route exact path="/"><AddMovie/></Route>
-                <Route exact path="/tv"></Route>
+                <Route exact path="/television"><AddTelevision/></Route>
               </Switch>
 
             </Row>

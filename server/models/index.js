@@ -1,6 +1,7 @@
 module.exports = {
     Request: require("./requestJSON"),
     User: require("./user"),
-    Collection: require("./collection")
+    Collection: require("./collection"),
+    TVShow: require("./television"),
   };
   
