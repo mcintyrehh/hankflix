@@ -14,6 +14,8 @@ module.exports = {
       tvCollection.map(show => {
         db.TVShow.findOne({ 'tvdbId': show.tvdbId }, (err, match) => {
           if(match) {
+            /*Need to add logic to update collection info with new episode/season download info
+              currently it will just ignore the show if its already in the collection */
             return;
           }
           else {
