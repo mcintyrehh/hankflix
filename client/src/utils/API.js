@@ -28,6 +28,9 @@ export default {
   },
   statusCheck: function(query) {
     return axios.get(`/api/movie`)
+  },
+  getTVCollection: function() {
+    return axios.get("/api/television/collection");
   }
 
 };

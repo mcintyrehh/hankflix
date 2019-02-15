@@ -62,7 +62,7 @@ module.exports = {
       })
     },
     get: function(req, res) {
-      axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.SONARR_API}`)
+      axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.RADARR_API}`)
       .then(function(response) {
           const allMovies = response.data
           allMovies.map(movie => {
