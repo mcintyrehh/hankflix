@@ -31,6 +31,10 @@ const collectionSchema = new Schema({
         type: String,
         required: false
     },
+    tmdb_id: {
+        type: String,
+        required: false
+    },
     added: {
         type: Date
     }

@@ -86,7 +86,7 @@ module.exports = {
           -if it exists and the statuses differ, it updates them to the most recent info
           -if it doesn't already exist we add a new entry */
           allMovies.map(movie => {
-            const query = { 'imdb_id': movie.imdbId }
+            const query = { 'tmdb_id': movie.tmdbId }
             db.Collection.findOne(query, (err, match) => {
               if (match) {
                 if (match.imdb_id === '' || !match.imdb_id) {
@@ -114,11 +114,11 @@ module.exports = {
                   downloaded: movie.downloaded,
                   monitored: movie.monitored,
                   imdb_id: movie.imdbId,
-                  added: movie.added
+                  tmdb_id: movie.tmdbId,
+                  added: movie.added,
                 }
                 db.Collection.create(movieAdd);
-                console.log("movie added!")
-                console.log(movieadd);
+                console.log(`${movie.title} (${movie.year}) - added!`)
               }
             })
           })

@@ -65,7 +65,7 @@ class MovieCard extends Component {
       <Col span={18} className="movieCard" style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
         <div className="card movieCard">
           <Col span={8} className="movieCard">
-            <img alt={`pic for ${this.state.movieObject.title}`} src={(this.state.movieObject.src !== "https://image.tmdb.org/t/p/w500null" )? this.state.movieObject.remotePoster : "/images/default.png"}/>
+            <img alt={`pic for ${this.state.movieObject.title}`} src={(this.state.movieObject.remotePoster !== "http://image.tmdb.org/t/p/original" )? this.state.movieObject.remotePoster : "/images/default.png"}/>
           </Col>
           <Col span={16} className="movieCard">
             <div className="overlay">

@@ -24,7 +24,7 @@ class AddMovie extends Component {
         this.setState({searchResponse: json})
         API.getCollection()
         .then(function(res, err) {
-        //   console.log(res)
+          console.log(res)
         })
         
     }
