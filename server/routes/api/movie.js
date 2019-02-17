@@ -11,12 +11,13 @@ router.route("/list")
     .get(movieController.list)
 // matches with '/api/movie/movie-search
 router.route("/movie-search/:id")
-    .get(movieController.search)
+    .get(movieController.searchByTerm)
 // matches with '/api/movie/:id'
 router.route('/:id')
     .get(movieController.statusCheck)
     .delete(movieController.remove)
-
+router.route('/radarr-post')
+    .post(movieController.radarrPost)
 // matches with '/api/movie/imdb/:id'
 router.route('/imdb/:id')
     .get(movieController.getID);

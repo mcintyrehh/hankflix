@@ -17,10 +17,16 @@ export default {
   newRequest: function(requestData) {
     return axios.post("/api/movie", requestData);
   },
+  radarrPost: function(data) {
+    return axios.post("/api/movie/radarr-post", data);
+  },
   getCollection: function() {
     return axios.get("/api/movie");
   },
-  search: function(query) {
+  // search: function(query) {
+  //   return axios.get(`/api/movie/movie-search/${query}`, query);
+  // },
+  searchByTerm(query) {
     return axios.get(`/api/movie/movie-search/${query}`, query);
   },
   getID: function(query) {

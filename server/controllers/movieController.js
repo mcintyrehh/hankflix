@@ -37,7 +37,7 @@ module.exports = {
     search: function(req, res) {
       console.log(req.params.id);
       const query = req.params.id;
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API}&language=en-US&query=${query}&page=1&include_adult=false`)
+      axios.get(`https://api.themoviedb.org/3/search/movie/lookup?term=?api_key=${process.env.TMDB_API}&language=en-US&query=${query}&page=1&include_adult=false`)
         .then(function(response) {
           const responseBlock = response.data
           console.log(responseBlock);
@@ -46,6 +46,21 @@ module.exports = {
         .catch(function(error) {
           console.log(error);
         })
+    },
+    searchByTerm: function(req, res) {
+      console.log(req.params.id);
+      //replaces spaces in search terms  with %20 per radarr api docs
+      const query = encodeURIComponent(req.params.id.trim())
+      console.log(query);
+      axios.get(`https://onrayradarr.duckdns.org/api/movie/lookup?term=${query}&apikey=${process.env.RADARR_API}`)
+      .then(function(response) {
+        const responseBlock = response.data
+        console.log(responseBlock);
+        return res.json(responseBlock);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
     },
     statusCheck: function(req, res) {
       console.log(req.params.id)
@@ -77,12 +92,7 @@ module.exports = {
                 if (match.imdb_id === '' || !match.imdb_id) {
                   return;
                 }
-                // console.log(`${match.title} - Monitored: ${match.monitored} vs ${movie.monitored}`)
-                // console.log(`${match.title} - Downloaded: ${match.downloaded} vs ${movie.downloaded}`)
-                // console.log(typeof match.monitored)
-                // console.log(typeof movie.monitored)
                 if ((match.monitored == movie.monitored.toString()) && (match.downloaded == movie.downloaded.toString())) {
-                  // console.log("*****MATCH*****")
                   return;
                 }
                 else {
@@ -117,6 +127,9 @@ module.exports = {
       .catch(function(error) {
           console.log(error);
       })
+    },
+    radarrPost: function(req, res) {
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
     },
     list: function(req, res) {
       db.Request
