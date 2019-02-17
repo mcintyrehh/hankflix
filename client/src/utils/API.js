@@ -2,39 +2,31 @@ import axios from "axios";
 
 export default {
   
-  // Gets all books
-  getAllRequests: function() {
-    return axios.get("/api/movie");
-  },
-  // Gets the book with the given id
-  getRequest: function(id) {
-    return axios.get(`/api/movie/${id}`, id);
-  },
-  // checkID: function(query) { 
-  //   return axios.get(`/api/movie/${query}`, query);
-  // },
-  // Sends a new request to the server
-  newRequest: function(requestData) {
-    return axios.post("/api/movie", requestData);
-  },
-  radarrPost: function(data) {
-    return axios.post("/api/movie/radarr-post", data);
-  },
+  // gets all movies in radarr collection, populates/updates local db
   getCollection: function() {
     return axios.get("/api/movie");
   },
-  // search: function(query) {
-  //   return axios.get(`/api/movie/movie-search/${query}`, query);
-  // },
+  // searches for new movies on trakt by search query
   searchByTerm(query) {
     return axios.get(`/api/movie/movie-search/${query}`, query);
   },
-  getID: function(query) {
-    return axios.get(`/api/movie/imdb/${query}`, query);
+  // checks the monitored/downloaded status by a movie's tmdb id
+  checkStatus: function(id) {
+    return axios.get(`/api/movie/${id}`, id);
   },
-  statusCheck: function(query) {
-    return axios.get(`/api/movie`)
+  // adds a movie request to /api/movie/list, to be picked up by radarr when it scrapes the url every 15 mins 
+  // (as a failsafe incase the below POST doesn't work)
+  newRequest: function(requestData) {
+    return axios.post("/api/movie", requestData);
   },
+  // posts a new movie to radarr, adds to collection
+  radarrPost: function(data) {
+    return axios.post("/api/movie/radarr-post", data);
+  },
+
+  /********************************/
+  /*******TELEVISION ROUTES********/
+  /********************************/
   getTVCollection: function() {
     return axios.get("/api/television/collection");
   },

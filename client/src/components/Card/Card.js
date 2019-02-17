@@ -8,24 +8,17 @@ class MovieCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      overview: '',
-      year: '',
-      yearOnly: '',
-      src: '',
       tmdbID: <Button shape="circle" loading />,
       monitored: <Button shape="circle" loading />,
       downloaded: <Button shape="circle" loading />,
-      imdbID: '',
-      titleSlug: '',
       movieObject: {}
     }
   }
   createRequest = () => {
     const req = {
-      title: this.state.title,
-      imdb_id: this.state.imdbID,
-      poster_url: this.state.src,
+      title: this.state.movieObject.title,
+      imdb_id: this.state.movidObject.imdbID,
+      poster_url: this.state.movieObject.remotePoster,
     }
     const radarrPostData = {
       title: this.state.title,
@@ -43,18 +36,17 @@ class MovieCard extends Component {
     })
   }
   componentDidMount = (props) => {
-    this.setState({ movieObject: this.props.movie });
-
+    this.setState({ movieObject: this.props.movie })
 // // This sents a get request to /api/movies/:id using  the imdbID from the function above
 // // this is routed to movieController.checkStatus, which checks the ID against the Radarr Collection
 // // * if matched it returns the match and monitored/downloaded states are set from those values
 // // * if no match, monitored: "false", downloaded: "false" is returned 
-//       API.getRequest(imdb_id)
-//         .then(res => {
-//             const movie = res.data
-//             this.setState({monitored: movie.monitored})
-//             this.setState({ downloaded: movie.downloaded})
-//         })
+      API.checkStatus(this.props.movie.tmdbId)
+        .then(res => {
+            const movie = res.data
+            this.setState({monitored: movie.monitored})
+            this.setState({ downloaded: movie.downloaded})
+        })
 //         .catch(err => console.log(err));
 //     })
 //     .catch(err => console.log(err));

@@ -64,7 +64,7 @@ module.exports = {
     },
     statusCheck: function(req, res) {
       console.log(req.params.id)
-      db.Collection.findOne({ 'imdb_id': req.params.id}, (err, match) => {
+      db.Collection.findOne({ 'tmdb_id': req.params.id}, (err, match) => {
         if (match) {
           return res.json(match);
         }
