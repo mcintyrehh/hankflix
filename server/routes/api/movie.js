@@ -4,7 +4,7 @@ const movieController = require("../../controllers/movieController");
 // matches with '/api/movie'
 router.route("/")
     .post(movieController.create)
-    .get(movieController.get)
+    .get(movieController.getCollection)
 
 // matches with '/api/movie/list'
 router.route("/list")

@@ -22,6 +22,10 @@ class AddMovie extends Component {
     }
     componentDidMount = () => {
         this.setState({searchResponse: json})
+        API.getCollection()
+        .then(function(res, err) {
+          console.log(res)
+        })
         
     }
     newRequest = (movieInfo) => {

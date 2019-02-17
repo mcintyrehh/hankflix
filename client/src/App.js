@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API from "./utils/API";
+// import API from "./utils/API";
 import AUTH from "./utils/AUTH";
 import { Route, Switch,  } from "react-router-dom";
 import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
@@ -46,8 +46,8 @@ class App extends Component {
   logout = () => {
     AUTH.logout()
     .then((res, err) => {
-      if (err) {console.log(err)}
-      else(console.log(res))
+      // if (err) {console.log(err)}
+      // else(console.log(res))
       this.setState({loggedIn: false, user: null, loggingIn: false})
     })
   }
@@ -58,7 +58,6 @@ class App extends Component {
     this.setState({ visibleLogin })
   }
   handleVisibleChangeLoginXS = (visibleLoginXS) => {
-    console.log(visibleLoginXS)
     this.setState({ visibleLoginXS })
   }
   handleVisibleChangeMenu = (visibleLoginMenu) => {
@@ -75,10 +74,10 @@ class App extends Component {
   }
   
   componentDidMount() {
-    console.log(this.state);
+    // console.log(this.state);
     console.log("😎Hankflix👨‍🎤")
     AUTH.getUser().then(response => {
-			console.log(response.data);
+			console.log(response.data.user);
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -90,17 +89,11 @@ class App extends Component {
 					user: null
 				});
 			}
-		})
-    API.getCollection()
-      .then(function(res, err) {
-        console.log(res)
-      })
-    
+		})  
   }
   cancel = () => {
     this.setState({loggingIn: false}) 
   }
- 
   render() {
     return (
       <Layout>

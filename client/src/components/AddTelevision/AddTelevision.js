@@ -17,16 +17,31 @@ class AddTelevision extends Component {
             queryID: '',
             iconLoadingTitle: "false",
             iconLoadingID: "false",
-            searchResponse: []
+            searchResponse: [],
+            tvdbAuthToken: ''
         }
     }
     componentDidMount = () => {
         this.setState({searchResponse: json})
         console.log("in tv");
+        API.tvdbLogin()
+        .then((res, err) => {
+            if(err) {console.log(err)}
+            else {
+                console.log(res.data);
+                const token = res.data.token;
+                this.setState({ tvdbAuthToken: token})
+            }
+        })
+        API.tvdbSearch("space")
+        .then(function(res, err) {
+            if(err) {console.log(err)}
+            else {console.log(res.data)}
+        })
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
         .then(function(res, err) {
-            console.log(res)
+            // console.log(res)
           })
     }
     // newRequest = (movieInfo) => {

@@ -31,6 +31,11 @@ export default {
   },
   getTVCollection: function() {
     return axios.get("/api/television/collection");
+  },
+  tvdbLogin: function() {
+    return axios.get("api/television/tvdb-login");
+  },
+  tvdbSearch: function(query) {
+    return axios.get(`/api/television/search/${query}`, query);
   }
-
 };

@@ -61,14 +61,38 @@ module.exports = {
         }
       })
     },
-    get: function(req, res) {
+    getCollection: function(req, res) {
+      // hits radarr api and returns an object containing the entire movie collection
       axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.RADARR_API}`)
       .then(function(response) {
           const allMovies = response.data
+          /*For every movie returned, it checks our current collection db to see if it exists already
+          -if it exists and the monitored/downloaded status are the same --- it moves on
+          -if it exists and the statuses differ, it updates them to the most recent info
+          -if it doesn't already exist we add a new entry */
           allMovies.map(movie => {
-            db.Collection.findOne({ 'imdb_id': movie.imdbId }, (err, match) => {
+            const query = { 'imdb_id': movie.imdbId }
+            db.Collection.findOne(query, (err, match) => {
               if (match) {
-                return;
+                if (match.imdb_id === '' || !match.imdb_id) {
+                  return;
+                }
+                // console.log(`${match.title} - Monitored: ${match.monitored} vs ${movie.monitored}`)
+                // console.log(`${match.title} - Downloaded: ${match.downloaded} vs ${movie.downloaded}`)
+                // console.log(typeof match.monitored)
+                // console.log(typeof movie.monitored)
+                if ((match.monitored == movie.monitored.toString()) && (match.downloaded == movie.downloaded.toString())) {
+                  // console.log("*****MATCH*****")
+                  return;
+                }
+                else {
+                  console.log("missmatch");
+                  console.log(match);
+                  db.Collection.findOneAndUpdate(query, { monitored: movie.monitored, downloaded: movie.downloaded }, (err, match) => {
+                    // console.log(`updated ${match.title}`);
+                  })
+                  return;
+                }
               }
               else {
                 const movieAdd = {
@@ -83,7 +107,8 @@ module.exports = {
                   added: movie.added
                 }
                 db.Collection.create(movieAdd);
-                console.log("movie added!");
+                console.log("movie added!")
+                console.log(movieadd);
               }
             })
           })
