@@ -189,10 +189,11 @@ class App extends Component {
         </Header>
         <Content>
           <div className="container">
+            {/* <Row> <Link></Link><Button>TV</Button></Row> */}
             <Row type="flex" justify="center">
               <Switch>
                 <Route exact path="/"><AddMovie/></Route>
-                <Route path="/television"><AddTelevision/></Route>
+                <Route path="/television" component={AddTelevision}/>
               </Switch>
 
             </Row>
