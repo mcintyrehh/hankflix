@@ -52,7 +52,7 @@ module.exports = {
       //replaces spaces in search terms  with %20 per radarr api docs
       const query = encodeURIComponent(req.params.id.trim())
       console.log(query);
-      axios.get(`https://onrayradarr.duckdns.org/api/movie/lookup?term=${query}&apikey=${process.env.RADARR_API}`)
+      axios.get(`${process.env.RADARR_URL}/api/movie/lookup?term=${query}&apikey=${process.env.RADARR_API}`)
       .then(function(response) {
         const responseBlock = response.data
         console.log(responseBlock);
@@ -78,7 +78,7 @@ module.exports = {
     },
     getCollection: function(req, res) {
       // hits radarr api and returns an object containing the entire movie collection
-      axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.RADARR_API}`)
+      axios.get(`${process.env.RADARR_URL}/api/movie?apikey=${process.env.RADARR_API}`)
       .then(function(response) {
           const allMovies = response.data
           /*For every movie returned, it checks our current collection db to see if it exists already
@@ -134,7 +134,7 @@ module.exports = {
       console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
       console.log(req.body);
       console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
-      axios.post(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.RADARR_API}`, req.body)
+      axios.post(`${process.env.RADARR_URL}/api/movie?apikey=${process.env.RADARR_API}`, req.body)
       .then(function (response) {
         return res.json(response.data);
       })
