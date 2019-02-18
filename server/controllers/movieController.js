@@ -128,8 +128,19 @@ module.exports = {
           console.log(error);
       })
     },
+    /* takes the object of movie information generated from the API.radarrPost(radarrPostData) function and adds a new movie
+       - returns json object if successful */
     radarrPost: function(req, res) {
       console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+      console.log(req.body);
+      console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+      axios.post(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.RADARR_API}`, req.body)
+      .then(function (response) {
+        return res.json(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     },
     list: function(req, res) {
       db.Request
