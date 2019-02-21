@@ -18,6 +18,8 @@ A full MERN stack app for digitizing physical media collections using [Sonarr](h
         * Set up subdomains for your docker containers, this setup used onraysonarr.duckdns.org and onrayradarr.duckdns.org, making the endpoints:
             * Sonarr: https://onraysonarr.duckdns.org/api
             * Radarr: https://onrayradarr.duckdns.org/api
+1. Add your Radarr domain + /api/movie/list (ex. htttps://onraysonarr.duckdns.org/api/movie/list) as a list in Radarr settings
+    ![Radarr List Setup Image](https://github.com/mcintyrehh/hankflix/blob/master/client/public/images/Capture.PNG)
 1. For more information about this pre-setup, please see Spaceinvader One's great tutorial about this: https://youtu.be/I0lhZc25Sro
 
 ## What needs to be configured next
@@ -26,6 +28,10 @@ A full MERN stack app for digitizing physical media collections using [Sonarr](h
     SONARR_API=YourAPIKeysHere
     RADARR_API=NoNeedForQuotes
     TMDB_API=lkjl897u098lkjl9873jhkjhuiyTheyWillLookLikeThis
+    TVDB_API=lastonefornow98347520935uual;ksjdf
+    RADARR_URL=https://yourradarrsubdomain.yourdomain.org
+    SONARR_URL=https://yoursonarrsubdomain.yourdomain.org
+    
 ```
 2. You will need to update your Sonarr/Radarr endpoints in the get/post calls in /server/controllers/sonarrController.js (as well as the Radarr controller)
 ```javascript
