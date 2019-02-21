@@ -13,7 +13,6 @@ class AddMovie extends Component {
         super();
         this.state = {
             queryTitle: '',
-            queryYear: '',
             queryID: '',
             iconLoadingTitle: "false",
             iconLoadingID: "false",
@@ -29,6 +28,7 @@ class AddMovie extends Component {
         
     }
     handleChange = (event) => {
+        console.log("noice");
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -36,7 +36,7 @@ class AddMovie extends Component {
     searchByTerm = () => {
         let self = this;
         this.setState({ iconLoadingTitle: "true" })
-        console.log(`Title: ${this.state.queryTitle} Year: ${this.state.queryYear}`) 
+        console.log(`Title: ${this.state.queryTitle}`) 
         const query = this.state.queryTitle;
         API.searchByTerm(query)
             .then(function(response) {
@@ -50,11 +50,23 @@ class AddMovie extends Component {
                 console.log(err);
             })
     }
-    searchByID = () => {
-        this.setState({ iconLoadingID: true })
-        console.log(`IMDb ID: ${this.state.queryID}`)
-        // const imdbID = this.state.queryID;
-    }
+    // searchByID = () => {
+    //     console.log("noice2");
+        
+    //     this.setState({ iconLoadingID: "true" })
+    //     console.log(`Title: ${this.state.queryID}`) 
+    //     const searchID = this.state.queryID;
+    //     API.searchByID(test)
+    //         .then(response => {
+    //             console.log(response.data);
+    //             const queryData = response.data;
+    //             this.setState({ searchResponse: queryData });
+    //             this.setState({ iconLoadingID: "false" })
+    //         })
+    //         .catch(function(err) {
+    //             console.log(err);
+    //         })
+    // }
     render() {
         return (
             <Col md={16} sm={24} className="searchBox">
@@ -72,6 +84,7 @@ class AddMovie extends Component {
                         <Search
                             placeholder="Jaws" 
                             enterButton
+                            allowClear
                             name="queryTitle"
                             value={this.state.queryTitle}
                             onChange={this.handleChange}
@@ -80,7 +93,7 @@ class AddMovie extends Component {
                         </Search>
                     </Col>                     
                 </Row>
-                <Row type="flex" justify="center">
+                {/* <Row type="flex" justify="center">
                     <Col 
                     span={9}
                     style={{
@@ -92,15 +105,16 @@ class AddMovie extends Component {
                     <Col className="searchLine" span={10}>
                         <Search
                             placeholder="tt0073195" 
-                            name="queryID"
                             enterButton
+                            allowClear
+                            name="queryID"
                             value={this.state.queryID}
                             onChange={this.handleChange}
                             loading={this.state.iconLoadingID}
                             onSearch={this.searchById}>
                         </Search>
                     </Col>
-                </Row>
+                </Row> */}
                 <Row className="cardBox" type="flex" justify="center">
                     <Col
                         span={20}

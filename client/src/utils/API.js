@@ -10,6 +10,9 @@ export default {
   searchByTerm(query) {
     return axios.get(`/api/movie/movie-search/${query}`, query);
   },
+  searchByID(id) {
+    return axios.get(`/api/movie/movie-search/imdb-id/${id}`, id)
+  },
   // checks the monitored/downloaded status by a movie's tmdb id
   checkStatus: function(id) {
     return axios.get(`/api/movie/${id}`, id);
@@ -33,7 +36,7 @@ export default {
   tvdbLogin: function() {
     return axios.get("api/television/tvdb-login");
   },
-  tvdbSearch: function(query) {
-    return axios.get(`/api/television/search/${query}`, query);
+  tvdbSearch: function(obj) {
+    return axios.post(`/api/television/search/${obj.id}`, obj.token);
   }
 };

@@ -62,6 +62,19 @@ module.exports = {
         console.log(error);
       })
     },
+    searchById: function(req, res) {
+      const id = req.params.id;
+      console.log(query);
+      axios.get(`${process.env.RADARR_API}/api/movie/lookup/imdb?imdbId=${id}`)
+      .then(function(response) {
+        const responseBlock = response.data
+        console.log(responseBlock);
+        return res.json(responseBlock);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+    },
     statusCheck: function(req, res) {
       console.log(req.params.id)
       db.Collection.findOne({ 'tmdb_id': req.params.id}, (err, match) => {

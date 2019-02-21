@@ -20,12 +20,12 @@ module.exports = {
     });
   },
   TVDBSearch: function(req, res) {
-    console.log("test");
+    console.log(req.token);
     const searchTerm = req.params.query;
     console.log(searchTerm);
     axios.get(`https://api.thetvdb.com/search/series?name=${searchTerm}`, {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTAzMzQ3NjksImlkIjoiIiwib3JpZ19pYXQiOjE1NTAyNDgzNjksInVzZXJpZCI6NTIwNTEwLCJ1c2VybmFtZSI6Im1jaW50eXJlaGhwZTgifQ.uMcc4ObjYtkWY7iU47OxkhsqelPb6jIWbPImDYDDlf20OUeXm2QGVeKl_zoR3FA0D_h-plM7ZfQ-1iWR3_6xx5rmQ5s-44c6QjW3ukn2hlpvqng_dB5Wn5UJXltl5wjvWNfEP6HilCCK6V3i_3DoOuhiBel_1W_YKkFW2THyqpGCKjTfqaRrHVJ5k1dGdnsK7hH2ev9IdqsfPA8yfjgiamWr4yYf6VUJbSB0_fK80Ie3XYbLv1l6fwMDILp69hYldqtGKxWCyo5Z1DMxzUDwzP6Vv47MoNFUsa6XucqB3RmRtwQlWojJ80a_xZO3WKRKxM12vX3l-PhOUAvikYi5bg`
+        Authorization: `Bearer ${req.token}`
       }
     })
     .then(function (response) {

@@ -5,13 +5,15 @@ const movieController = require("../../controllers/movieController");
 router.route("/")
     .post(movieController.create)
     .get(movieController.getCollection)
-
 // matches with '/api/movie/list'
 router.route("/list")
     .get(movieController.list)
 // matches with '/api/movie/movie-search
 router.route("/movie-search/:id")
     .get(movieController.searchByTerm)
+//matches with '/api/movie/movie-search/imdb-id/..
+router.route("/movie-search/imdb-id/:id")
+    .get(movieController.searchById)
 // matches with '/api/movie/:id'
 router.route('/:id')
     .get(movieController.statusCheck)
