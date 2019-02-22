@@ -36,7 +36,11 @@ export default {
   tvdbLogin: function() {
     return axios.get("api/television/tvdb-login");
   },
-  tvdbSearch: function(obj) {
-    return axios.post(`/api/television/search/${obj.id}`, obj.token);
+  tvdbSearch: function(query, token) {
+    return axios.get(`/api/television/search/${query}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
   }
 };

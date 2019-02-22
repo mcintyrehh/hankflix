@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Col, Row, Input } from 'antd';
 import API from "../../utils/API";
 // import axios from 'axios';
+// import axios from 'axios';
 import './AddTelevision.css';
 // import { MovieCard } from '../Card'
 
 // const Search = Input.Search;
-const json = require('./data.json');
+// const json = require('./data.json');
 const Search = Input.Search;
 class AddTelevision extends Component {
     constructor() {
@@ -15,11 +16,12 @@ class AddTelevision extends Component {
             queryTitle: '',
             iconLoadingTitle: "false",
             searchResponse: [],
-            tvdbAuthToken: ''
+            tvdbAuthToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTA4OTQ0NTEsImlkIjoiIiwib3JpZ19pYXQiOjE1NTA4MDgwNTEsInVzZXJpZCI6NTIwNTEwLCJ1c2VybmFtZSI6Im1jaW50eXJlaGhwZTgifQ.eMCtp7hqgRDG4ytpMh1FysEGwe5iqG3GkbSToXJ5QwjTdNBv0EHaxGF6LmBKSrihYhf8ZZZO1RF5lOXKUvs4ky1ugavqSt7Upylud9wbggWW-K8q-wOMu9bOLnlTTkt5-vOU84xZ4iyDywn5BUJBl7xui--nELr2dutuaVRwIZZu4gHGiur9IWkffWVwsFyqREHJMImvqwnA8INqQwB1m87rbnq-mvU-yfteqkWlPfm6UmpaQtx828C5GnBvvPjfIXPDD9Ci6sVuT0aHvhoCCI2diOhDneO64r2EnVpSYZHav4609XgMwNpgY5HC0VZB2Nyset-V5J1MdzT_EDxVxA',
+            loggedIn: 'false'
         }
     }
     componentDidMount = () => {
-        this.setState({searchResponse: json})
+        // this.setState({searchResponse: json})
         console.log("in tv");
         API.tvdbLogin()
         .then((res, err) => {
@@ -29,15 +31,6 @@ class AddTelevision extends Component {
                 const token = res.data.token;
                 this.setState({ tvdbAuthToken: token})
             }
-        })
-        const obj = {
-            id: "space",
-            token: this.state.tvdbAuthToken
-        }
-        API.tvdbSearch(obj)
-        .then(function(res, err) {
-            if(err) {console.log(err)}
-            else {console.log(res.data)}
         })
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
@@ -52,30 +45,23 @@ class AddTelevision extends Component {
     }
     searchByTitle = () => {
         this.setState({ iconLoadingTitle: "true" })
-        console.log(`Title: ${this.state.queryTitle} Year: ${this.state.queryYear}`) 
+        console.log(`Title: ${this.state.queryTitle}`) 
         const query = this.state.queryTitle;
-        API.search(query)
-            .then(response => {
-                console.log(response.data.results);
-                const queryData = response.data.results;
-                this.setState({ searchResponse: queryData });
-                this.setState({ iconLoadingTitle: "false" });
-
-            })
-            .catch(function(err) {
-                console.log(err);
-            })
-    }
-    searchByID = () => {
-        this.setState({ iconLoadingID: true })
-        console.log(`IMDb ID: ${this.state.queryID}`)
-        // const imdbID = this.state.queryID;
-        
+        const token = this.state.tvdbAuthToken;
+        API.tvdbSearch(query, token)
+        .then((res, err) => {
+            if (err) {console.log(err)}
+            else {
+                console.log(res.data.data);
+                const searchResponse = res.data
+                this.setState({ searchResponse: searchResponse})
+            }
+        })
     }
     render() {
         return (
             <Col md={16} sm={24} className="searchBox">
-                <div className="searchHeadline">IMDb Movie Search</div>
+                <div className="searchHeadline">TBDb Series Search</div>
                 <Row type="flex" justify="center">
                     <Col 
                     span={9}
@@ -87,36 +73,16 @@ class AddTelevision extends Component {
                 <Row type="flex" justify="center">
                     <Col className="searchLine" span={10}>
                         <Search
-                            placeholder="Jaws" 
+                            placeholder="Broad City" 
                             enterButton
+                            allowClear
                             name="queryTitle"
                             value={this.state.queryTitle}
                             onChange={this.handleChange}
                             loading={this.state.iconLoadingTitle}
-                            onSearch={this.searchByYear}>
+                            onSearch={this.searchByTitle}>
                         </Search>
                     </Col>                     
-                </Row>
-                <Row type="flex" justify="center">
-                    <Col 
-                    span={9}
-                    style={{
-                        textAlign: "center", 
-                        borderBottom: "1px white solid",
-                        margin: 10}}>By IMDb ID</Col>
-                </Row>
-                <Row type="flex" justify="center">
-                    <Col className="searchLine" span={10}>
-                        <Search
-                            placeholder="tt0073195" 
-                            name="queryID"
-                            enterButton
-                            value={this.state.queryID}
-                            onChange={this.handleChange}
-                            loading={this.state.iconLoadingID}
-                            onSearch={this.searchById}>
-                        </Search>
-                    </Col>
                 </Row>
                 <Row className="cardBox" type="flex" justify="center">
                     <Col

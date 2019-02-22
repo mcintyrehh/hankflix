@@ -20,12 +20,15 @@ module.exports = {
     });
   },
   TVDBSearch: function(req, res) {
-    console.log(req.token);
+    console.log(req.params);
+    console.log(req.headers);
     const searchTerm = req.params.query;
+    const authToken = req.headers.authorization;
     console.log(searchTerm);
+    console.log(authToken);
     axios.get(`https://api.thetvdb.com/search/series?name=${searchTerm}`, {
       headers: {
-        Authorization: `Bearer ${req.token}`
+        Authorization: authToken 
       }
     })
     .then(function (response) {
@@ -33,7 +36,7 @@ module.exports = {
       res.json(response.data);
     })
     .catch(function (error) {
-      // console.log(error);
+      console.log(error);
     });
   },
   getCollection: function(req, res) {
@@ -70,8 +73,5 @@ module.exports = {
     .catch(function(error) {
       console.log(error);
     })
-  },
-  searchTVDB: function(req, res) {
-    axios.get(`https://api.thetvdb.com/`)
   }
 };
