@@ -33,8 +33,8 @@ export default {
   getTVCollection: function() {
     return axios.get("/api/television/collection");
   },
-  tvdbLogin: function() {
-    return axios.get("api/television/tvdb-login");
+  checkSeries: function(series) {
+    return axios.get(`/api/television/${series}`);
   },
   tvdbSearch: function(query, token) {
     return axios.get(`/api/television/search/${query}`, {
@@ -42,5 +42,8 @@ export default {
         Authorization: `Bearer ${token}`
       }
     });
+  },
+  newSeriesRequest: function(seriesData) {
+    return axios.post("/api/television/sonarr-post", seriesData);
   }
 };

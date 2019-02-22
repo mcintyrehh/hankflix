@@ -8,6 +8,9 @@ router.route("/tvdb-login")
     .get(televisionController.TVDBLogin);
 router.route("/search/:query")
     .get(televisionController.TVDBSearch);
+//matches with '/api/television/:series'
+router.route("/:series")
+    .get(televisionController.checkSeries);
 // router.route('/:id')
 //     // matches with '/api/sonarr/:id' in routes
 //     .get(sonarrController.search);

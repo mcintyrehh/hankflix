@@ -33,6 +33,19 @@ module.exports = {
       console.log(error);
     });
   },
+  checkSeries: function(req, res) {
+    db.TVShow.findOne({'tvdbId': req.params.series }, (err, match) => {
+      if (match) {
+        return res.json(match);
+      }
+      else {
+        return res.json({
+          monitored: "false",
+          downloaded: "false"
+        });
+      }
+    })
+  },
   getCollection: function(req, res) {
     axios.get(`https://onraysonarr.duckdns.org/api/series?apikey=${process.env.SONARR_API}`)
     .then(function(response) {

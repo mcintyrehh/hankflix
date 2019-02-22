@@ -4,10 +4,10 @@ import API from "../../utils/API";
 // import axios from 'axios';
 // import axios from 'axios';
 import './AddTelevision.css';
-// import { MovieCard } from '../Card'
+import { TVCard } from '../Card'
 
 // const Search = Input.Search;
-// const json = require('./data.json');
+const json = require('./data.json');
 const Search = Input.Search;
 class AddTelevision extends Component {
     constructor() {
@@ -20,7 +20,7 @@ class AddTelevision extends Component {
         }
     }
     componentDidMount = () => {
-        // this.setState({searchResponse: json})
+        this.setState({searchResponse: json})
         console.log("in tv");
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
@@ -84,15 +84,11 @@ class AddTelevision extends Component {
                         marginBottom: 20,
                         textAlign: "center"}}>
                         <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                            {/* {this.state.searchResponse.map(movie=><MovieCard key={movie.id} newRequest={this.newRequest} movie={movie}/>)} */}
+                            {this.state.searchResponse.map(series=><TVCard key={series.tvdbId} series={series}/>)}
                         </div>
-                        {/* {this.state.searchResponse.map(movie => <MovieCard key={movie.Poster} movie={movie}/>)} */}
                     </Col>
                 </Row>
             </Col>
-            //     </Row>
-            // </div>
-
         )
     }
 }
