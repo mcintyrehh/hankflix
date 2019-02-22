@@ -21,16 +21,10 @@ module.exports = {
   },
   TVDBSearch: function(req, res) {
     console.log(req.params);
-    console.log(req.headers);
-    const searchTerm = req.params.query;
+    const searchTerm = encodeURI(req.params.query);
     const authToken = req.headers.authorization;
     console.log(searchTerm);
-    console.log(authToken);
-    axios.get(`https://api.thetvdb.com/search/series?name=${searchTerm}`, {
-      headers: {
-        Authorization: authToken 
-      }
-    })
+    axios.get(`https://onraysonarr.duckdns.org/api/series/lookup?term=${searchTerm}&apikey=${process.env.SONARR_API}`)
     .then(function (response) {
       console.log(response.data);
       res.json(response.data);

@@ -16,22 +16,12 @@ class AddTelevision extends Component {
             queryTitle: '',
             iconLoadingTitle: "false",
             searchResponse: [],
-            tvdbAuthToken: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NTA4OTQ0NTEsImlkIjoiIiwib3JpZ19pYXQiOjE1NTA4MDgwNTEsInVzZXJpZCI6NTIwNTEwLCJ1c2VybmFtZSI6Im1jaW50eXJlaGhwZTgifQ.eMCtp7hqgRDG4ytpMh1FysEGwe5iqG3GkbSToXJ5QwjTdNBv0EHaxGF6LmBKSrihYhf8ZZZO1RF5lOXKUvs4ky1ugavqSt7Upylud9wbggWW-K8q-wOMu9bOLnlTTkt5-vOU84xZ4iyDywn5BUJBl7xui--nELr2dutuaVRwIZZu4gHGiur9IWkffWVwsFyqREHJMImvqwnA8INqQwB1m87rbnq-mvU-yfteqkWlPfm6UmpaQtx828C5GnBvvPjfIXPDD9Ci6sVuT0aHvhoCCI2diOhDneO64r2EnVpSYZHav4609XgMwNpgY5HC0VZB2Nyset-V5J1MdzT_EDxVxA',
             loggedIn: 'false'
         }
     }
     componentDidMount = () => {
         // this.setState({searchResponse: json})
         console.log("in tv");
-        API.tvdbLogin()
-        .then((res, err) => {
-            if(err) {console.log(err)}
-            else {
-                console.log(res.data);
-                const token = res.data.token;
-                this.setState({ tvdbAuthToken: token})
-            }
-        })
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
         .then(function(res, err) {
@@ -44,19 +34,21 @@ class AddTelevision extends Component {
         })
     }
     searchByTitle = () => {
-        this.setState({ iconLoadingTitle: "true" })
-        console.log(`Title: ${this.state.queryTitle}`) 
-        const query = this.state.queryTitle;
-        const token = this.state.tvdbAuthToken;
-        API.tvdbSearch(query, token)
-        .then((res, err) => {
-            if (err) {console.log(err)}
-            else {
-                console.log(res.data.data);
-                const searchResponse = res.data
-                this.setState({ searchResponse: searchResponse})
-            }
-        })
+        if (!!this.state.queryTitle) {
+            this.setState({ iconLoadingTitle: "true" })
+            console.log(`Title: ${this.state.queryTitle}`) 
+            const query = this.state.queryTitle;
+            API.tvdbSearch(query)
+            .then((res, err) => {
+                if (err) {console.log(err)}
+                else {
+                    console.log(res.data);
+                    const searchResponse = res.data
+                    this.setState({ searchResponse: searchResponse})
+                }
+            })
+        }
+        else { return }
     }
     render() {
         return (

@@ -34,21 +34,23 @@ class AddMovie extends Component {
         })
     }
     searchByTerm = () => {
-        let self = this;
-        this.setState({ iconLoadingTitle: "true" })
-        console.log(`Title: ${this.state.queryTitle}`) 
-        const query = this.state.queryTitle;
-        API.searchByTerm(query)
-            .then(function(response) {
-                console.log(response.data);
-                const queryData = response.data;
-                self.setState({ searchResponse: queryData });
-                self.setState({ iconLoadingTitle: "false" });
-
-            })
-            .catch(function(err) {
-                console.log(err);
-            })
+        if (!!this.state.queryTitle) {
+            this.setState({ iconLoadingTitle: "true" })
+            console.log(`Title: ${this.state.queryTitle}`) 
+            const query = this.state.queryTitle;
+            API.searchByTerm(query)
+                .then(response => {
+                    console.log(response.data);
+                    const queryData = response.data;
+                    this.setState({ searchResponse: queryData });
+                    this.setState({ iconLoadingTitle: "false" });
+    
+                })
+                .catch(function(err) {
+                    console.log(err);
+                })    
+        }
+        else { return }
     }
     // searchByID = () => {
     //     console.log("noice2");
