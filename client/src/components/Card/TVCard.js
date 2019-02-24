@@ -9,7 +9,6 @@ class TVCard extends Component {
     this.state = {
       tvdbID: <Button shape="circle" loading />,
       monitored: <Button shape="circle" loading />,
-      downloaded: <Button shape="circle" loading />,
     }
   }
   createRequest = () => {
@@ -56,9 +55,11 @@ class TVCard extends Component {
   componentDidMount = (props) => {
     API.checkSeries(this.props.series.tvdbId)
       .then(response => {
-        // console.log(response.data);
+        if(!!response.data.added) {
+          console.log(response.data);
+        }
         this.setState({
-          monitored: response.data.monitored
+          monitored: response.data.monitored.toString()
         })
       })
       .catch(err => console.log(err));
@@ -83,7 +84,10 @@ class TVCard extends Component {
               <div className="plot">{show.overview}</div>
               {/* ternary operators to set the css color based on whether they are downloaded or not */}
               <div>Currently monitored by server: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.monitored}</span></div>
-              <div>Downloaded: <span style={{color: this.state.downloaded === "true" ? "green" : "red"}}>{this.state.downloaded}</span></div>
+              <span style={{borderBottom: "1px solid white"}}>Seasons</span>
+              <br/>
+              {show.seasons.map(season=><div>Season {season.seasonNumber} | [</div>)}
+              <br/>
               {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload">monitor</Button>)}
             </div> 
           </Col>
