@@ -25,7 +25,7 @@ class AddTelevision extends Component {
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
         .then(function(res, err) {
-            // console.log(res)
+            console.log(res)
           })
     }
     handleChange = (event) => {
@@ -42,7 +42,7 @@ class AddTelevision extends Component {
             .then((res, err) => {
                 if (err) {console.log(err)}
                 else {
-                    console.log(res.data);
+                    // console.log(res.data);
                     const searchResponse = res.data
                     this.setState({ searchResponse: searchResponse})
                 }

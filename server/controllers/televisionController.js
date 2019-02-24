@@ -59,19 +59,8 @@ module.exports = {
             return;
           }
           else {
-            const addShow = {
-              tvdbId: show.tvdbId,
-              title: show.title,
-              qualityProfileId: 1,
-              titleSlug: show.titleSlug,
-              images: show.images,
-              seasons: show.seasons,
-              seasonCount: show.seasonCount,
-              totalEpisodeCount: show.totalEpisodeCount,
-              episodeCount: show.episodeCount
-            }
-          db.TVShow.create(addShow);
-          console.log("show added!");
+            db.TVShow.create(show);
+            console.log("show added!");
           }
         })
       })

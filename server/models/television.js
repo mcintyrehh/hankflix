@@ -3,21 +3,45 @@ const Schema = mongoose.Schema;
 
 
 const televisionSchema = new Schema ({
-    tvdbId: {
-        type: String,
-        required: true
-    },
     title: {
         type: String, 
         required: true
     },
-    qualityProfileId: {
-        type: Number,
-        required: true
+    alternativeTitles: {
+        type: Array
     },
-    titleSlug: {
+    sortTitle: {
         type: String,
-        required: true
+    },
+    seasonCount: {
+        type: Number
+    },
+    totalEpisodeCount: {
+        type: Number
+    },
+    episodeCount: {
+        type: Number
+    },
+    episodeFileCount: {
+        type: Number
+    },
+    sizeOnDisk: {
+        type: Number
+    },
+    status: {
+        type: String
+    },
+    overview: {
+        type: String
+    },
+    previousAiring: {
+        type: Date
+    },
+    network: {
+        type: String
+    },
+    airTime: {
+        type: String
     },
     images: {
         type: Array,
@@ -27,25 +51,77 @@ const televisionSchema = new Schema ({
         type: Array, 
         required: true
     },
+    year: {
+        type: Number
+    },
+    path: {
+        type: String
+    },
+    profileId: {
+        type: Number
+    },
+    seasonFolder: {
+        type: Boolean,
+        default: true
+    },
     monitored: {
         type: Boolean,
     },
-    addOptions: {
-        type: Boolean
+    useSceneNumbering: {
+        type: Boolean,
+        default: false
     },
-    dateAdded: {
+    runtime: {
+        type: Number
+    },
+    tvdbId: {
+        type: String,
+        required: true
+    },
+    tvRageId: {
+        type: String
+    },
+    tvMazeId: {
+        type: String
+    },
+    firstAired: {
+        type: Date
+    },
+    lastInfoSync: {
+        type: Date
+    },
+    seriesType: {
+        type: String
+    },
+    cleanTitle: {
+        type: String
+    },
+    imdbId: {
+        type: String
+    },
+    titleSlug: {
+        type: String
+    },
+    certification: {
+        type: String
+    },
+    genres: {
+        type: Array
+    },
+    tags: {
+        type: Array
+    }, 
+    added: {
         type: Date,
-        default: Date.now
     },
-    totalEpisodeCount: {
+    ratings: {
+        type: Object
+    },
+    qualityProfileId: {
         type: Number
     },
-    episodeCount: {
+    id: {
         type: Number
-    },
-    seasonCount: {
-        type: Number,
-        required: false
     }
 });
 

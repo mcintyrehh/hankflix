@@ -56,7 +56,7 @@ class TVCard extends Component {
   componentDidMount = (props) => {
     API.checkSeries(this.props.series.tvdbId)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({
           monitored: response.data.monitored
         })
