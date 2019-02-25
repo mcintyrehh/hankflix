@@ -23,7 +23,7 @@ module.exports = {
     console.log(req.params);
     const searchTerm = encodeURI(req.params.query);
     console.log(searchTerm);
-    axios.get(`https://onraysonarr.duckdns.org/api/series/lookup?term=${searchTerm}&apikey=${process.env.SONARR_API}`)
+    axios.get(`${process.env.SONARR_URL}/api/series/lookup?term=${searchTerm}&apikey=${process.env.SONARR_API}`)
     .then(function (response) {
       console.log(response.data);
       res.json(response.data);
@@ -46,7 +46,7 @@ module.exports = {
     })
   },
   getCollection: function(req, res) {
-    axios.get(`https://onraysonarr.duckdns.org/api/series?apikey=${process.env.SONARR_API}`)
+    axios.get(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`)
     .then(function(response) {
       // console.log(response.data);
       const tvCollection = response.data;
@@ -68,5 +68,14 @@ module.exports = {
     .catch(function(error) {
       console.log(error);
     })
+  },
+  sonarrPost: function(req, res) {
+    axios.post(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`, req.body)
+    .then(function (response) {
+      return res.json(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 };

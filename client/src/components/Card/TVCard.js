@@ -14,41 +14,46 @@ class TVCard extends Component {
   }
   createRequest = () => {
     const show = this.props.series;
-    const req = {
-      title: show.title,
-      imdb_id: show.tmdbId,
-      poster_url: show.remotePoster,
+    const seriesProp = this.props.series.seasons
+    const seasonsArray = [{
+      seasonNumber: 0,
+      monitored: false
+    }];
+    for (let i=1; i<seriesProp.length; i++) {
+      if (seriesProp[i].seasonNumber.toString() === "0" ) {
+        return;
+      }
+      else {
+        seasonsArray.push({
+          seasonNumber: i,
+          monitored: true
+        })        
+      }
     }
-    const radarrPostData = {
+    console.log(seasonsArray)
+    const sonarrPostData = {
+      tvdbId: show.tvdbId,
       title: show.title,
       qualityProfileId: 1,
       titleSlug: show.titleSlug,
       images: show.images,
-      tmdbId: show.tmdbId,
-      year: show.year,
-      path:  `/media/${show.title}`,
+      seasons: seasonsArray,
+      path: `/media/${show.title}`,
+      seasonFolder: true,
       monitored: true,
       addOptions: {
-        searchForMovie: true
-      }   
+        searchForMissingEpisodes: true
+      }
     }
-    API.newSeriesRequest(req)
-    .then(res => {
-      console.log("test")
-      console.log(res);
-      })
-    .catch(err => console.log(err));
-
-    API.radarrPost(radarrPostData)
+    API.sonarrPost(sonarrPostData)
     .then(res => {
       console.log(res.data)
       this.setState({monitored: res.data.monitored.toString()})
-      this.setState({ downloaded: res.data.downloaded.toString()})
       })
     .catch(err => console.log(err));
   
     notification.open({
-      message: '🧐Movie Monitored!👌',
+      message: '🧐TV Series Monitored!👌',
       description: `${show.title} (${show.year}) is now being monitored, if available it will begin downloading shortly!`,
       duration: 6
     })

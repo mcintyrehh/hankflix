@@ -43,7 +43,7 @@ export default {
       }
     });
   },
-  newSeriesRequest: function(seriesData) {
-    return axios.post("/api/television/sonarr-post", seriesData);
+  sonarrPost: function(data) {
+    return axios.post(`/api/television/sonarr-post`, data);
   }
 };
