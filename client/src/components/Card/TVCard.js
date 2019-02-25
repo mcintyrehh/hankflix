@@ -81,11 +81,10 @@ class TVCard extends Component {
             <div className="overlay">
               <div className="title">{show.title}</div>
               <div className="year">{show.year}</div>
-              {/* <div className="id">IMDb ID: {show.imdbID}</div> */}
               <div className="plot">{show.overview}</div>
               {/* ternary operators to set the css color based on whether they are downloaded or not */}
               <div>Currently monitored by server: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.monitored}</span></div>
-              <span style={{borderBottom: "1px solid white"}}>Seasons</span>
+              {this.state.seasonData.length !== 0 && (<span style={{borderBottom: "1px solid white"}}>Seasons</span>)}
               <br/>
               {/* this 'slice(1)' skips the first index of season 0, which is just all the specials for a series */}
               {this.state.seasonData.slice(1).map(season=>
