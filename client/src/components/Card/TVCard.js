@@ -9,6 +9,7 @@ class TVCard extends Component {
     this.state = {
       tvdbID: <Button shape="circle" loading />,
       monitored: <Button shape="circle" loading />,
+      seasonData: []
     }
   }
   createRequest = () => {
@@ -56,7 +57,7 @@ class TVCard extends Component {
     API.checkSeries(this.props.series.tvdbId)
       .then(response => {
         if(!!response.data.added) {
-          console.log(response.data);
+          this.setState({seasonData: response.data.seasons})
         }
         this.setState({
           monitored: response.data.monitored.toString()
@@ -86,7 +87,12 @@ class TVCard extends Component {
               <div>Currently monitored by server: <span style={{color: this.state.monitored === "true" ? "green" : "red"}}>{this.state.monitored}</span></div>
               <span style={{borderBottom: "1px solid white"}}>Seasons</span>
               <br/>
-              {show.seasons.map(season=><div>Season {season.seasonNumber} | [</div>)}
+              {/* this 'slice(1)' skips the first index of season 0, which is just all the specials for a series */}
+              {this.state.seasonData.slice(1).map(season=>
+               <div key={season.seasonNumber}>
+                <div> Season {season.seasonNumber} : <span style={{color: season.statistics.percentOfEpisodes === 100 ? "green" : "red"}}>{season.statistics.episodeCount }</span>/<span style={{color: season.statistics.percentOfEpisodes === 100 ? "green" : "red"}}>{season.statistics.totalEpisodeCount}</span> eps</div>
+               </div>
+              )}
               <br/>
               {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload">monitor</Button>)}
             </div> 

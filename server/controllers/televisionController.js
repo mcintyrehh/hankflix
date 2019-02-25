@@ -22,7 +22,6 @@ module.exports = {
   TVDBSearch: function(req, res) {
     console.log(req.params);
     const searchTerm = encodeURI(req.params.query);
-    const authToken = req.headers.authorization;
     console.log(searchTerm);
     axios.get(`https://onraysonarr.duckdns.org/api/series/lookup?term=${searchTerm}&apikey=${process.env.SONARR_API}`)
     .then(function (response) {
