@@ -48,6 +48,7 @@ class TVCard extends Component {
     API.sonarrPost(sonarrPostData)
     .then(res => {
       console.log(res.data)
+      this.checkSeries(res.data.tvdbId)
       this.setState({monitored: res.data.monitored.toString()})
       })
     .catch(err => console.log(err));
@@ -58,7 +59,7 @@ class TVCard extends Component {
       duration: 6
     })
   }
-  componentDidMount = (props) => {
+  checkSeries = (tvdbId) => {
     API.checkSeries(this.props.series.tvdbId)
       .then(response => {
         if(!!response.data.added) {
@@ -69,6 +70,9 @@ class TVCard extends Component {
         })
       })
       .catch(err => console.log(err));
+  }
+  componentDidMount = (props) => {
+    this.checkSeries(this.props.series.tvdbId)
     this.setState({ 
       // monitored: this.props.series.monitored.toString()
     })
