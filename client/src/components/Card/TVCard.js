@@ -102,7 +102,7 @@ class TVCard extends Component {
                </div>
               )}
               <br/>
-              {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8}}type="primary" icon="cloud-upload">monitor</Button>)}
+              {this.state.monitored === 'false' && (<Button onClick={this.createRequest} style={{marginLeft: 8, marginBottom: 15}}type="primary" icon="cloud-upload">monitor</Button>)}
             </div> 
           </Col>
         </div>

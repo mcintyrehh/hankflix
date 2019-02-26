@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import API from "./utils/API";
 import AUTH from "./utils/AUTH";
-import { Route, Switch,  } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
 // import Home from "./pages/Home/home";
 // import NoMatch from "./pages/NoMatch";
@@ -99,14 +99,20 @@ class App extends Component {
       <Layout>
         <Header>
           <Row>
-            <Col xs={{ span: 17, offset: 1 }}  sm={{ span: 8, offset: 4}} md={{ span:6, offset: 2}}>
+            <Col xs={{ span: 17, offset: 1 }}  sm={{ span: 8, offset: 4}} md={{ span:6, offset: 4}}>
               <a href="/" className="logo">
                 <span className="emojis" role="img" aria-label="smiley emoji">😎</span>
                 Hankflix
                 <span className="emojis" role="img" aria-label="smiley emoji">👨‍🎤</span>
               </a>
+              <span>
+                <Switch>
+                  <Route exact path="/"><Link to="/television" className="header-link">Television</Link></Route>  
+                  <Route path="/television"><Link to="/" className="header-link">Movies</Link></Route>
+                </Switch>
+              </span>
             </Col>
-            <Col xs={0} sm={0} md={12}>
+            <Col xs={0} sm={0} md={10}>
               <div className="login">
                 {/* if the user is logged in, this will appear in the header */}
                 {(this.state.loggedIn === true) && (
@@ -193,7 +199,7 @@ class App extends Component {
             <Row type="flex" justify="center">
               <Switch>
                 <Route exact path="/"><AddMovie/></Route>
-                <Route exact path="/television" component={AddTelevision}/>
+                <Route path="/television" component={AddTelevision}/>
               </Switch>
 
             </Row>

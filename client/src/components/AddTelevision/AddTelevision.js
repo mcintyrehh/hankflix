@@ -14,7 +14,7 @@ class AddTelevision extends Component {
         super();
         this.state = {
             queryTitle: '',
-            iconLoadingTitle: "false",
+            iconLoadingTitle: true,
             searchResponse: [],
             loggedIn: 'false'
         }
@@ -35,7 +35,7 @@ class AddTelevision extends Component {
     }
     searchByTitle = () => {
         if (!!this.state.queryTitle) {
-            this.setState({ iconLoadingTitle: "true" })
+            this.setState({ iconLoadingTitle: true })
             console.log(`Title: ${this.state.queryTitle}`) 
             const query = this.state.queryTitle;
             API.tvdbSearch(query)
@@ -45,6 +45,7 @@ class AddTelevision extends Component {
                     console.log(res.data);
                     const searchResponse = res.data
                     this.setState({ searchResponse: searchResponse})
+                    this.setState({ iconLoadingTitle: false})
                 }
             })
         }
@@ -67,7 +68,6 @@ class AddTelevision extends Component {
                         <Search
                             placeholder="Broad City" 
                             enterButton
-                            allowClear
                             name="queryTitle"
                             value={this.state.queryTitle}
                             onChange={this.handleChange}

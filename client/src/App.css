@@ -24,6 +24,9 @@
 .loginXS {
   visibility: hidden;
 }
+.header-link {
+  margin-left: 20px;
+}
 /* .registerXS {
   visibility: hidden;
 } */
