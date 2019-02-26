@@ -25,7 +25,7 @@ class AddTelevision extends Component {
         // on loading /television, a get request to /api/television/collection returns all monitored shows
         API.getTVCollection()
         .then(function(res, err) {
-            console.log(res.data)
+            // console.log(res.data)
           })
     }
     handleChange = (event) => {

@@ -4,10 +4,10 @@ const authRoutes = require("./auth");
 const apiRoutes = require("./api");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/*', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+router.use('/television', )
 // Auth Routes
 router.use('/auth', authRoutes);
 
