@@ -7,9 +7,7 @@ const apiRoutes = require("./api");
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/television', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
 // Auth Routes
 router.use('/auth', authRoutes);
 

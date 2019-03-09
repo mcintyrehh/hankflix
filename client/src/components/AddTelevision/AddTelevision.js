@@ -14,7 +14,7 @@ class AddTelevision extends Component {
         super();
         this.state = {
             queryTitle: '',
-            iconLoadingTitle: true,
+            iconLoadingTitle: 'true',
             searchResponse: [],
             loggedIn: 'false'
         }
