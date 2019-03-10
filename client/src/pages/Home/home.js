@@ -24,7 +24,7 @@ class Home extends Component {
         <div className="container">
             <Row type="flex" justify="center">
                 <Col md={16} sm={24} className="searchBox">
-                    <Row type="flex" justify="center" >
+                    <Row type="flex" justify="center" className="searchSwitch" >
                         <Switch checkedChildren="Movies" unCheckedChildren="Television" defaultChecked onChange={this.onChange} />
                     </Row>
                     {(this.state.view === 'movie') && (

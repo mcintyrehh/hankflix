@@ -50,8 +50,9 @@ class MovieCard extends Component {
     notification.open({
       message: '🧐Movie Monitored!👌',
       description: `${this.state.movieObject.title} (${this.state.movieObject.year}) is now being monitored, if available it will begin downloading shortly!`,
-      duration: 6
+      duration: 5
     })
+    this.setState({monitored: 'true'})
   }
   componentDidMount = (props) => {
     this.setState({ movieObject: this.props.movie })
