@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Switch } from 'antd';
+import { Row, Col, Switch } from 'antd';
 import AddMovie from "../../components/AddMovie";
 import AddTelevision from "../../components/AddTelevision";
 
@@ -22,16 +22,18 @@ class Home extends Component {
     render() {
         return (
         <div className="container">
-            <Row type="flex" justify="center" style={{paddingTop: 30}}>
-                <Switch checkedChildren="Movies" unCheckedChildren="Television" defaultChecked onChange={this.onChange} />
-            </Row>
             <Row type="flex" justify="center">
-                {(this.state.view === 'movie') && (
-                    <AddMovie/>
-                )}
-                {(this.state.view === 'television') && (
-                    <AddTelevision/>
-                )}
+                <Col md={16} sm={24} className="searchBox">
+                    <Row type="flex" justify="center" >
+                        <Switch checkedChildren="Movies" unCheckedChildren="Television" defaultChecked onChange={this.onChange} />
+                    </Row>
+                    {(this.state.view === 'movie') && (
+                        <AddMovie/>
+                    )}
+                    {(this.state.view === 'television') && (
+                        <AddTelevision/>
+                    )}
+                </Col>   
             </Row>
         </div>
         )

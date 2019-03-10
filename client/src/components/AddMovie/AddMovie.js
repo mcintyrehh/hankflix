@@ -55,43 +55,43 @@ class AddMovie extends Component {
 
     render() {
         return (
-            <Col md={16} sm={24} className="searchBox">
-                <div className="searchHeadline">IMDb Movie Search</div>
-                <Row type="flex" justify="center">
-                    <Col 
-                    span={9}
-                    style={{
-                        textAlign: "center", 
-                        borderBottom: "1px white solid",
-                        margin: 10}}>By Title</Col>
-                </Row>
-                <Row type="flex" justify="center">
-                    <Col className="searchLine" span={10}>
-                        <Search
-                            placeholder="Jaws" 
-                            enterButton
-                            allowClear
-                            name="queryTitle"
-                            value={this.state.queryTitle}
-                            onChange={this.handleChange}
-                            loading={this.state.iconLoadingTitle}
-                            onSearch={this.searchByTerm}>
-                        </Search>
-                    </Col>                     
-                </Row>
-                <Row className="cardBox" type="flex" justify="center">
-                    <Col
-                        span={20}
-                        style={{ 
-                        minHeight: 40,
-                        marginBottom: 20,
-                        textAlign: "center"}}>
-                        <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
-                            {this.state.searchResponse.map(movie=><MovieCard key={movie.titleSlug} newRequest={this.newRequest} movie={movie}/>)}
-                        </div>
-                    </Col>
-                </Row>
-            </Col>
+        <>
+            <div className="searchHeadline">IMDb Movie Search</div>
+            <Row type="flex" justify="center">
+                <Col 
+                span={9}
+                style={{
+                    textAlign: "center", 
+                    borderBottom: "1px white solid",
+                    margin: 10}}>By Title</Col>
+            </Row>
+            <Row type="flex" justify="center">
+                <Col className="searchLine" span={10}>
+                    <Search
+                        placeholder="Jaws" 
+                        enterButton
+                        allowClear
+                        name="queryTitle"
+                        value={this.state.queryTitle}
+                        onChange={this.handleChange}
+                        loading={this.state.iconLoadingTitle}
+                        onSearch={this.searchByTerm}>
+                    </Search>
+                </Col>                     
+            </Row>
+            <Row className="cardBox" type="flex" justify="center">
+                <Col
+                    span={20}
+                    style={{ 
+                    minHeight: 40,
+                    marginBottom: 20,
+                    textAlign: "center"}}>
+                    <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}}>
+                        {this.state.searchResponse.map(movie=><MovieCard key={movie.titleSlug} newRequest={this.newRequest} movie={movie}/>)}
+                    </div>
+                </Col>
+            </Row>
+        </>
         )
     }
 }

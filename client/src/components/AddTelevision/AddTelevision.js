@@ -53,7 +53,7 @@ class AddTelevision extends Component {
     }
     render() {
         return (
-            <Col md={16} sm={24} className="searchBox">
+            <>
                 <div className="searchHeadline">TVDb Series Search</div>
                 <Row type="flex" justify="center">
                     <Col 
@@ -88,7 +88,7 @@ class AddTelevision extends Component {
                         </div>
                     </Col>
                 </Row>
-            </Col>
+            </>
         )
     }
 }
