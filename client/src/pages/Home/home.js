@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import { Row } from 'antd';
+import { Row, Switch } from 'antd';
 import AddMovie from "../../components/AddMovie";
 import AddTelevision from "../../components/AddTelevision";
-import '../../App.css';
-import './home.css';
-// import API from '../../utils/API'
-// import axios from 'axios';
 
 
 class Home extends Component {
@@ -19,10 +15,17 @@ class Home extends Component {
     componentDidMount() {
         console.log('home');
     }
+    onChange = (checked) => {
+        console.log(`switch set to ${checked}`)
+        checked ? this.setState({view: "movie"}) : this.setState({view: "television"})
+    }
 
     render() {
         return (
         <div className="container">
+            <Row type="flex" justify="center">
+                <Switch checkedChildren="Movies" unCheckedChildren="Television" defaultChecked onChange={this.onChange} />
+            </Row>
             <Row type="flex" justify="center">
                 {(this.state.view === 'movie') && (
                     <AddMovie/>

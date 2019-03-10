@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 // import API from "./utils/API";
 import AUTH from "./utils/AUTH";
-import { Route, Switch, Link } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
 import Home from "./pages/Home/home";
 import NoMatch from "./pages/NoMatch";
 // import dotenv from "dotenv";
 // import axios from 'axios';
-import AddMovie from "./components/AddMovie";
-import AddTelevision from "./components/AddTelevision";
+// import AddMovie from "./components/AddMovie";
+// import AddTelevision from "./components/AddTelevision";
 import { WrappedLogin, Register } from "./components/LoginForms";
 import './App.css';
 

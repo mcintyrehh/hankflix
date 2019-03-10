@@ -52,23 +52,7 @@ class AddMovie extends Component {
         }
         else { return }
     }
-    // searchByID = () => {
-    //     console.log("noice2");
-        
-    //     this.setState({ iconLoadingID: "true" })
-    //     console.log(`Title: ${this.state.queryID}`) 
-    //     const searchID = this.state.queryID;
-    //     API.searchByID(test)
-    //         .then(response => {
-    //             console.log(response.data);
-    //             const queryData = response.data;
-    //             this.setState({ searchResponse: queryData });
-    //             this.setState({ iconLoadingID: "false" })
-    //         })
-    //         .catch(function(err) {
-    //             console.log(err);
-    //         })
-    // }
+
     render() {
         return (
             <Col md={16} sm={24} className="searchBox">
@@ -95,28 +79,6 @@ class AddMovie extends Component {
                         </Search>
                     </Col>                     
                 </Row>
-                {/* <Row type="flex" justify="center">
-                    <Col 
-                    span={9}
-                    style={{
-                        textAlign: "center", 
-                        borderBottom: "1px white solid",
-                        margin: 10}}>By IMDb ID</Col>
-                </Row>
-                <Row type="flex" justify="center">
-                    <Col className="searchLine" span={10}>
-                        <Search
-                            placeholder="tt0073195" 
-                            enterButton
-                            allowClear
-                            name="queryID"
-                            value={this.state.queryID}
-                            onChange={this.handleChange}
-                            loading={this.state.iconLoadingID}
-                            onSearch={this.searchById}>
-                        </Search>
-                    </Col>
-                </Row> */}
                 <Row className="cardBox" type="flex" justify="center">
                     <Col
                         span={20}
