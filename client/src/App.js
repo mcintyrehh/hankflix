@@ -141,8 +141,9 @@ class App extends Component {
             <Col xs={6} sm={6} md={0} align="center">
             {(this.state.loggedIn === true) && (
                 <div className="loggedInText">
-                  <span style={{color: "white"}}>{this.state.user}</span>
+                  <span style={{color: "white"}}><span className="emojis" role="img" aria-label="smirk emoji">😏</span>
                   <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
+                  </span>
                 </div>)
             }
             {(this.state.loggedIn === false ) && (

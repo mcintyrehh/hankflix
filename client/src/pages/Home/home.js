@@ -16,14 +16,13 @@ class Home extends Component {
         console.log('home');
     }
     onChange = (checked) => {
-        console.log(`switch set to ${checked}`)
         checked ? this.setState({view: "movie"}) : this.setState({view: "television"})
     }
 
     render() {
         return (
         <div className="container">
-            <Row type="flex" justify="center">
+            <Row type="flex" justify="center" style={{paddingTop: 30}}>
                 <Switch checkedChildren="Movies" unCheckedChildren="Television" defaultChecked onChange={this.onChange} />
             </Row>
             <Row type="flex" justify="center">
