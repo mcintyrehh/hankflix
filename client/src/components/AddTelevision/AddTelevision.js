@@ -35,7 +35,7 @@ class AddTelevision extends Component {
     }
     searchByTitle = () => {
         if (!!this.state.queryTitle) {
-            this.setState({ iconLoadingTitle: true })
+            this.setState({ iconLoadingTitle: 'true' })
             console.log(`Title: ${this.state.queryTitle}`) 
             const query = this.state.queryTitle;
             API.tvdbSearch(query)
@@ -45,7 +45,7 @@ class AddTelevision extends Component {
                     console.log(res.data);
                     const searchResponse = res.data
                     this.setState({ searchResponse: searchResponse})
-                    this.setState({ iconLoadingTitle: false})
+                    this.setState({ iconLoadingTitle: 'false'})
                 }
             })
         }
@@ -54,7 +54,7 @@ class AddTelevision extends Component {
     render() {
         return (
             <Col md={16} sm={24} className="searchBox">
-                <div className="searchHeadline">TBDb Series Search</div>
+                <div className="searchHeadline">TVDb Series Search</div>
                 <Row type="flex" justify="center">
                     <Col 
                     span={9}

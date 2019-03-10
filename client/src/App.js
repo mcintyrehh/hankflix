@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import AUTH from "./utils/AUTH";
 import { Route, Switch, Link } from "react-router-dom";
 import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
-// import Home from "./pages/Home/home";
-// import NoMatch from "./pages/NoMatch";
+import Home from "./pages/Home/home";
+import NoMatch from "./pages/NoMatch";
 // import dotenv from "dotenv";
 // import axios from 'axios';
 import AddMovie from "./components/AddMovie";
@@ -105,12 +105,6 @@ class App extends Component {
                 Hankflix
                 <span className="emojis" role="img" aria-label="smiley emoji">👨‍🎤</span>
               </a>
-              <span>
-                <Switch>
-                  <Route exact path="/"><Link to="/television" className="header-link">Television</Link></Route>  
-                  <Route path="/television"><Link to="/" className="header-link">Movies</Link></Route>
-                </Switch>
-              </span>
             </Col>
             <Col xs={0} sm={0} md={10}>
               <div className="login">
@@ -196,13 +190,10 @@ class App extends Component {
         <Content>
           <div className="container">
             {/* <Row> <Link></Link><Button>TV</Button></Row> */}
-            <Row type="flex" justify="center">
-              <Switch>
-                <Route exact path="/"><AddMovie/></Route>
-                <Route path="/television" component={AddTelevision}/>
-              </Switch>
-
-            </Row>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route component={NoMatch}/>
+            </Switch>
           </div>
         </Content>
         <Footer style={{ backgroundColor: '#03152a' }}>Footer</Footer>

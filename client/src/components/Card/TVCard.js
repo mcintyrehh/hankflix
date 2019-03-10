@@ -52,7 +52,10 @@ class TVCard extends Component {
       this.setState({monitored: res.data.monitored.toString()})
       })
     .catch(err => console.log(err));
-  
+    //updates UI to say monitored
+    this.setState({monitored: true})
+    //refreshes season data
+    this.checkSeries(show.tvdbID);
     notification.open({
       message: '🧐TV Series Monitored!👌',
       description: `${show.title} (${show.year}) is now being monitored, if available it will begin downloading shortly!`,
@@ -63,7 +66,14 @@ class TVCard extends Component {
     API.checkSeries(this.props.series.tvdbId)
       .then(response => {
         if(!!response.data.added) {
-          this.setState({seasonData: response.data.seasons})
+          //this part trims out season '0' seasons that are actually just specials
+          const trimmedSeasons = [];
+          response.data.seasons.map(season => {
+            if (season.seasonNumber !== 0) {
+              trimmedSeasons.push(season);
+            }
+          })
+          this.setState({seasonData: trimmedSeasons})
         }
         this.setState({
           monitored: response.data.monitored.toString()
@@ -96,7 +106,7 @@ class TVCard extends Component {
               {this.state.seasonData.length !== 0 && (<span style={{borderBottom: "1px solid white"}}>Seasons</span>)}
               <br/>
               {/* this 'slice(1)' skips the first index of season 0, which is just all the specials for a series */}
-              {this.state.seasonData.slice(1).map(season=>
+              {this.state.seasonData.map(season=>
                <div key={season.seasonNumber}>
                 <div> Season {season.seasonNumber} : <span style={{color: season.statistics.percentOfEpisodes === 100 ? "green" : "red"}}>{season.statistics.episodeCount }</span>/<span style={{color: season.statistics.percentOfEpisodes === 100 ? "green" : "red"}}>{season.statistics.totalEpisodeCount}</span> eps</div>
                </div>

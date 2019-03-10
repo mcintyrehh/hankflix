@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
-import { Layout, Button } from 'antd';
-import { Row, Col } from 'antd';
-
+import { Row } from 'antd';
+import AddMovie from "../../components/AddMovie";
+import AddTelevision from "../../components/AddTelevision";
 import '../../App.css';
 import './home.css';
-import API from '../../utils/API'
-import axios from 'axios';
+// import API from '../../utils/API'
+// import axios from 'axios';
 
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            test: "test"
+            view: "movie"
         };
     }
 
     componentDidMount() {
-        this.loadFakeArticles();
+        console.log('home');
     }
 
     render() {
-        console.log(this.state.fakeNews);
         return (
-
-            <div>Home Div</div>
-
+        <div className="container">
+            <Row type="flex" justify="center">
+                {(this.state.view === 'movie') && (
+                    <AddMovie/>
+                )}
+                {(this.state.view === 'television') && (
+                    <AddTelevision/>
+                )}
+            </Row>
+        </div>
         )
     }
 }
