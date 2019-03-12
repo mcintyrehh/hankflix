@@ -1,6 +1,7 @@
 # 😎Hankflix👨‍🎤
 A full MERN stack app for digitizing physical media collections using [Sonarr](https://github.com/Sonarr/Sonarr/wiki/API) and [Radarr](https://github.com/Radarr/Radarr/wiki/API) Dockers
-
+![example gif](/client/public/images/ReadMeExamples/Overview.gif)
+      
 ## What needs to be configured first
 1. You will need Sonarr/Radarr installed and set up with the indexers/download client of your choosing
 1. If you only want functionality on your local network, the API endpoints (in /server/controllers/) will be:
@@ -33,38 +34,5 @@ A full MERN stack app for digitizing physical media collections using [Sonarr](h
     SONARR_URL=https://yoursonarrsubdomain.yourdomain.org
     
 ```
-2. You will need to update your Sonarr/Radarr endpoints in the get/post calls in /server/controllers/sonarrController.js (as well as the Radarr controller)
-```javascript
-    get: function(req, res) {
-        axios.get(`https://onrayradarr.duckdns.org/api/movie?apikey=${process.env.SONARR_API}`)
-        .then(function(response) {
-            const allMovies = response.data
-            allMovies.map(movie => {
-              db.Collection.findOne({ 'imdb_id': movie.imdbId }, (err, match) => {
-                if (match) {
-                  return;
-                }
-                else {
-                  const movieAdd = {
-                    title: movie.title,
-                    overview: movie.overview,
-                    year: movie.year,
-                    status: movie.status,
-                    image: movie.images[0].url,
-                    downloaded: movie.downloaded,
-                    monitored: movie.monitored,
-                    imdb_id: movie.imdbId,
-                    added: movie.added
-                  }
-                  db.Collection.create(movieAdd);
-                  console.log("movie added!");
-                }
-              })
-            })
-            return res.json(allMovies);
-        })
-        .catch(function(error) {
-            console.log(error);
-        })
-    },
-```
+
+
