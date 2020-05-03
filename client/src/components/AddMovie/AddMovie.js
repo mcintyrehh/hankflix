@@ -6,7 +6,7 @@ import './AddMovie.css';
 import { MovieCard } from '../Card'
 
 // const Search = Input.Search;
-const json = require('./data.json');
+
 const Search = Input.Search;
 class AddMovie extends Component {
     constructor() {
@@ -14,17 +14,21 @@ class AddMovie extends Component {
         this.state = {
             queryTitle: '',
             queryID: '',
-            iconLoadingTitle: "false",
-            iconLoadingID: "false",
+            iconLoadingTitle: "true",
+            iconLoadingID: "true",
             searchResponse: []
         }
     }
+    componentWillMount = () => {
+        this.setState({queryTitle: "Jaws"})
+    }
     componentDidMount = () => {
-        this.setState({searchResponse: json})
+        this.searchByTerm()
+        //TODO: fix getCollection image setting
         API.getCollection()
         .then(function(res, err) {
           console.log(res)
-        })
+        }) 
         
     }
     handleChange = (event) => {

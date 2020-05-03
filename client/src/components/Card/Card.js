@@ -66,14 +66,20 @@ class MovieCard extends Component {
           this.setState({ downloaded: movie.downloaded})
       })
       .catch(err => console.log(err));
-  }
-
+  };
+  addDefaultImgSrc(event){
+    event.target.src='/images/default.png';
+  };
   render() {
     return (
       <Col span={18} className="movieCard" style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
         <div className="card movieCard">
           <Col span={8} className="movieCard">
-            <img alt={`pic for ${this.state.movieObject.title}`} src={(this.state.movieObject.remotePoster !== "http://image.tmdb.org/t/p/original" )? this.state.movieObject.remotePoster : "/images/default.png"}/>
+          <img 
+            alt={`pic for ${this.state.movieObject.title}`}
+             
+            src={this.state.movieObject.remotePoster ? this.state.movieObject.remotePoster : "/images/default.png"}
+            onError={this.addDefaultImgSrc}/> 
           </Col>
           <Col span={16} className="movieCard">
             <div className="overlay">

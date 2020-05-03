@@ -70,7 +70,8 @@ class TVCard extends Component {
           const trimmedSeasons = [];
           response.data.seasons.map(season => {
             if (season.seasonNumber !== 0) {
-              trimmedSeasons.push(season);
+              return trimmedSeasons.push(season);
+             
             }
           })
           this.setState({seasonData: trimmedSeasons})
