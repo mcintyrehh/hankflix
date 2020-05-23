@@ -1,2 +1,2 @@
-export { MovieCard }  from "./Card";
+export { MovieCard }  from "./MovieCard";
 export { TVCard } from "./TVCard";

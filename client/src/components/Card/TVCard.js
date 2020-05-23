@@ -71,7 +71,8 @@ class TVCard extends Component {
           response.data.seasons.map(season => {
             if (season.seasonNumber !== 0) {
               return trimmedSeasons.push(season);
-             
+            } else {
+              return trimmedSeasons
             }
           })
           this.setState({seasonData: trimmedSeasons})
@@ -88,14 +89,21 @@ class TVCard extends Component {
       // monitored: this.props.series.monitored.toString()
     })
   }
-
+  addDefaultImgSrc(event){
+    event.target.src='/images/default.png';
+  };
   render() {
     const show = this.props.series;
     return (
       <Col span={18} className="movieCard" style={{ margin: 5, borderRadius: 10, borderBottom: "2px white solid", borderRight: "2px white solid" }}>
         <div className="card movieCard">
           <Col span={8} className="movieCard">
-            <img alt={`pic for ${show.title}`} src={(!!show.remotePoster )? show.remotePoster : "/images/default.png"}/>
+            <img 
+            alt={`pic for ${show.title}`} 
+            src={(!!show.remotePoster ) ? show.remotePoster : "/images/default.png"}
+            onError={this.addDefaultImgSrc}
+            />
+         
           </Col>
           <Col span={16} className="movieCard">
             <div className="overlay">

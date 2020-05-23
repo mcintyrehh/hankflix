@@ -2,14 +2,13 @@ const axios = require("axios");
 const db = require("../models");
 require("dotenv").config();
 
-
 // Defining methods for the requestController
 module.exports = {
   TVDBLogin: function(req, res) {
     axios.post(`https://api.thetvdb.com/login`, {
       apikey: process.env.TVDB_API,
-      username: "mcintyrehhpe8",
-      userkey: "QCMXKFYRC4Z2F7J7"
+      username: process.env.TVDB_USERNAME,
+      userkey: process.env.TVDB_USERKEY,
     })
     .then(function (response) {
       console.log(`TVDBLogin response: ${response.data}`);
@@ -70,8 +69,10 @@ module.exports = {
     })
   },
   sonarrPost: function(req, res) {
+    console.log(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`)
     axios.post(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`, req.body)
     .then(function (response) {
+      // console.log("sonarrPost response.data: ", response.data)
       return res.json(response.data);
     })
     .catch(function (error) {
