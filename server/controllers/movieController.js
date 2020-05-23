@@ -40,7 +40,6 @@ module.exports = {
       axios.get(`https://api.themoviedb.org/3/search/movie/lookup?term=?api_key=${process.env.TMDB_API}&language=en-US&query=${query}&page=1&include_adult=false`)
         .then(function(response) {
           const responseBlock = response.data
-          console.log(responseBlock);
           return res.json(responseBlock);
         })
         .catch(function(error) {
@@ -123,7 +122,7 @@ module.exports = {
                   overview: movie.overview,
                   year: movie.year,
                   status: movie.status,
-                  image: movie.images[0].url,
+                  image: ((movie || {}).images[0] || {}).url, //makes sure we're never reading .url of undefined, if a property doesn't exist it creates an empty object on the fly
                   downloaded: movie.downloaded,
                   monitored: movie.monitored,
                   imdb_id: movie.imdbId,

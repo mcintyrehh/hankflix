@@ -41,7 +41,6 @@ class MovieCard extends Component {
 
     API.radarrPost(radarrPostData)
     .then(res => {
-      console.log(res.data)
       this.setState({monitored: res.data.monitored.toString()})
       this.setState({ downloaded: res.data.downloaded.toString()})
       })
