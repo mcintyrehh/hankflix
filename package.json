@@ -16,7 +16,7 @@
     "npm": "5.6.x"
   },
   "devDependencies": {
-    "concurrently": "4.1.0",
+    "concurrently": "^5.2.0",
     "nodemon": "1.18.9"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "axios": "^0.18.1",
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
-    "connect-mongo": "^2.0.3",
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
