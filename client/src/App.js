@@ -4,10 +4,11 @@ import { Route, Switch } from "react-router-dom";
 import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
 import Home from "./pages/Home/home";
 import NoMatch from "./pages/NoMatch";
+import Header from "./components/Header/Header";
 import { WrappedLogin, Register } from "./components/LoginForms";
 import './App.css';
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 class App extends Component {
   constructor() {
     super();
@@ -92,97 +93,7 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <Header>
-          <Row>
-            <Col xs={{ span: 17, offset: 1 }}  sm={{ span: 8, offset: 4}} md={{ span:6, offset: 4}}>
-              <a href="/" className="logo">
-                <span className="emojis" role="img" aria-label="smiley emoji">😎</span>
-                Hankflix
-                <span className="emojis" role="img" aria-label="smiley emoji">👨‍🎤</span>
-              </a>
-            </Col>
-            <Col xs={0} sm={0} md={10}>
-              <div className="login">
-                {/* if the user is logged in, this will appear in the header */}
-                {(this.state.loggedIn === true) && (
-                  <div className="loggedInText">
-                    <span style={{ color: "white" }}>{this.state.user}, we've been expecting you</span>
-                    <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
-                  </div>)
-                }
-                {/* if they aren't currently logged in, OR logging in, display the login/register buttons */}
-                {(this.state.loggingIn === false && this.state.loggedIn === false) && (
-                  <div>
-                    <Popover
-                      content={<WrappedLogin login={this.login}></WrappedLogin>}
-                      title="Login"
-                      trigger="click"
-                      visible={this.state.visibleLogin}
-                      onVisibleChange={this.handleVisibleChangeLogin}>
-                      <Button className="login" type="primary">Log In</Button>
-                    </Popover>
-                    <Popover
-                      content={<Register hide={this.hide} login={this.login}></Register>}
-                      title="Register"
-                      trigger="click"
-                      visible={this.state.visible}
-                      onVisibleChange={this.handleVisibleChange}>
-                      <Button className="register" type="primary">Register</Button>
-                    </Popover>
-                  </div>
-                )}
-              </div>
-            </Col>
-            <Col xs={6} sm={6} md={0} align="center">
-            {(this.state.loggedIn === true) && (
-                <div className="loggedInText">
-                  <span style={{color: "white"}}><span className="emojis" role="img" aria-label="smirk emoji">😏</span>
-                  <Button className="logout" type="default" onClick={this.logout}>Logout</Button>
-                  </span>
-                </div>)
-            }
-            {(this.state.loggedIn === false ) && (
-              <Dropdown 
-              onVisibleChange={this.handleVisibleChangeMenuDropdown}
-              visible={this.state.visibleMenu}
-              overlay={
-                <Menu>
-                    <Menu.Item key="1"><Icon type="user" />
-                    <Popover
-                      content={<WrappedLogin hide={this.hide} login={this.login}></WrappedLogin>}
-                      title="Login"
-                      
-                      popupAlign={{ offset: [0, -50] }}
-                      trigger="hover"
-                      visible={this.state.visibleLoginXS}
-                      onVisibleChange={this.handleVisibleChangeLoginXS}>
-                      <Button className="loginSmall" type="primary">Log In</Button>
-                    </Popover>
-                    </Menu.Item>
-                    <Menu.Item key="2"><Icon type="form" />
-                      <Popover
-                        content={<Register hide={this.hide} login={this.login}></Register>}
-                        title="Register"
-                        trigger="hover"
-                        visible={this.state.visibleRegisterPop}
-                        onVisibleChange={this.handleVisibleChangeRegisterPop}>
-                        <Button className="register" type="primary">Register</Button>
-                      </Popover>
-                    </Menu.Item>
-                </Menu>
-            }>
-              <Button type="primary" style={{ marginLeft: 8 }}>
-                <Icon type="down" />
-              </Button>
-            </Dropdown>
-
-            )}
-
-            </Col>
-
-          </Row>
-          
-        </Header>
+        <Header/>
         <Content>
           <div className="container">
             {/* <Row> <Link></Link><Button>TV</Button></Row> */}
