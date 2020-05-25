@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 import AUTH from "./utils/AUTH";
+import theme from "./theme";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { Route, Switch } from "react-router-dom";
-import { Layout, Row, Col, Button, Popover, Icon, Dropdown, Menu,  } from 'antd';
+import { Layout } from 'antd';
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Home from "./pages/Home/home";
+import Login from "./components/Login/Login";
 import NoMatch from "./pages/NoMatch";
 import Header from "./components/Header/Header";
-import { WrappedLogin, Register } from "./components/LoginForms";
 import './App.css';
 
-const { Footer, Content } = Layout;
+const { Footer } = Layout;
 class App extends Component {
   constructor() {
     super();
@@ -47,28 +51,7 @@ class App extends Component {
       this.setState({loggedIn: false, user: null, loggingIn: false})
     })
   }
-  handleVisibleChange = (visible) => {
-    this.setState({ visible })
-  }
-  handleVisibleChangeLogin = (visibleLogin) => {
-    this.setState({ visibleLogin })
-  }
-  handleVisibleChangeLoginXS = (visibleLoginXS) => {
-    this.setState({ visibleLoginXS })
-  }
-  handleVisibleChangeMenu = (visibleLoginMenu) => {
-    this.setState({ visibleLoginMenu })
-  }
-  handleVisibleChangeMenuDropdown = (visibleMenu) => {
-    this.setState({ visibleMenu})
-  }
-  handleVisibleChangeRegisterPop = (visibleRegisterPop) => {
-    this.setState({ visibleRegisterPop })
-  }
-  handleVisibleChangeMenu = (flag) => {
-    this.setState({ visibleMenu: flag });
-  }
-  
+
   componentDidMount() {
     // console.log(this.state);
     console.log("😎Hankflix👨‍🎤")
@@ -92,19 +75,19 @@ class App extends Component {
   }
   render() {
     return (
-      <Layout>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
         <Header/>
-        <Content>
-          <div className="container">
-            {/* <Row> <Link></Link><Button>TV</Button></Row> */}
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route component={NoMatch}/>
-            </Switch>
-          </div>
-        </Content>
+        <div className="container">
+          <Switch>
+            <Route path="/signin" component={Login} />
+            <PrivateRoute exact path="/" component={Home} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
         <Footer style={{ backgroundColor: '#03152a' }}>Footer</Footer>
-      </Layout>
+      </ThemeProvider>
+
     );
   }
 }
