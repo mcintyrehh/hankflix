@@ -13,6 +13,10 @@ export default {
   login: function(username, password) {
     return axios.post('/auth/login', { username, password });
   },
+  // Log in with Plex credentials
+  plexLogin: function() {
+    return axios.post('/auth/plex-login');
+  },
   // New user registration
   signup: function(userData) {
     return axios.post('/auth/signup', userData);

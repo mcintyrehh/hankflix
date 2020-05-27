@@ -46,7 +46,7 @@ class App extends Component {
   logout = () => {
     AUTH.logout()
     .then((res, err) => {
-      // if (err) {console.log(err)}
+      // if (err) {console.log(err)} b557bef578784secret441734355528
       // else(console.log(res))
       this.setState({loggedIn: false, user: null, loggingIn: false})
     })
