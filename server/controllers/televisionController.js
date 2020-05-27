@@ -69,7 +69,6 @@ module.exports = {
     })
   },
   sonarrPost: function(req, res) {
-    console.log(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`)
     axios.post(`${process.env.SONARR_URL}/api/series?apikey=${process.env.SONARR_API}`, req.body)
     .then(function (response) {
       // console.log("sonarrPost response.data: ", response.data)

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AUTH from "./utils/AUTH";
 import theme from "./theme";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AuthCallback from "./utils/AuthCallback";
 import { Route, Switch } from "react-router-dom";
 import { Layout } from 'antd';
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -81,6 +82,7 @@ class App extends Component {
         <div className="container">
           <Switch>
             <Route path="/signin" component={Login} />
+            <Route path="/implicit/callback" component={AuthCallback}/>
             <PrivateRoute exact path="/" component={Home} />
             <Route component={NoMatch} />
           </Switch>

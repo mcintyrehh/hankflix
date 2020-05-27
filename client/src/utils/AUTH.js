@@ -17,6 +17,10 @@ export default {
   plexLogin: function() {
     return axios.post('/auth/plex-login');
   },
+  // Gets plex AuthToken
+  plexToken: function(id) {
+    return axios.post('/auth/plex-token/', {id: id});
+  },
   // New user registration
   signup: function(userData) {
     return axios.post('/auth/signup', userData);

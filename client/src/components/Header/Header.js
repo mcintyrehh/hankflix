@@ -59,7 +59,7 @@ export default function Header(props) {
                     color="primary" 
                     variant="contained"
                     endIcon={<SettingsIcon color="secondary"></SettingsIcon>}>
-                    {(props.user || {}).username}
+                    Hi {(props.user || {}).username}
                 </Button>
               </React.Fragment>
             )}
