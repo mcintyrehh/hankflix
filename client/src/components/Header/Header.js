@@ -1,10 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import SettingsIcon from "@material-ui/icons/Settings";
+import CustomizedMenues from "./StyledMenu";
 
 import "../../App.css";
 
@@ -30,6 +31,14 @@ const useStyles = makeStyles({
 
 export default function Header(props) {
   const classes = useStyles();
+  const [anchorElement, setAnchorElement] = React.useState(null);
+
+  const handleSettingsClick = (event) => {
+    setAnchorElement(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorElement(null);
+  }
 
   return (
     <Grid container className={classes.headerDiv}>
@@ -56,11 +65,15 @@ export default function Header(props) {
             {!props.isLoggedIn && (
                 <React.Fragment>
                 <Button 
+                    aria-controls="settings-button"
+                    aria-haspopup="true"
+                    onClick={handleSettingsClick}
                     color="primary" 
                     variant="contained"
                     endIcon={<SettingsIcon color="secondary"></SettingsIcon>}>
                     Hi {(props.user || {}).username}
                 </Button>
+                <CustomizedMenues onClick={handleSettingsClick} onClose={handleClose} anchorEl={anchorElement}/>
               </React.Fragment>
             )}
           </Grid>

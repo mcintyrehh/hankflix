@@ -19,10 +19,22 @@ export default {
   },
   // Gets plex AuthToken
   plexToken: function(id) {
-    return axios.post('/auth/plex-token/', {id: id});
+    return axios.post('/auth/plex-token', {id: id});
+  },
+  // Gets Plex user information 
+  plexUserInfo: function(token) {
+    return axios.post('/auth/plex-user-account', {token: token});
   },
   // New user registration
   signup: function(userData) {
     return axios.post('/auth/signup', userData);
+  },
+  isLoggedIn: function() {
+    const userInfo = JSON.parse(localStorage.getItem("user"))
+    if(userInfo.authToken) {
+      return {loggedIn: true, user: userInfo}
+    } else {
+      return {loggedIn: false, user: null}
+    }
   }
 };

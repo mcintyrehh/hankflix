@@ -99,7 +99,7 @@ module.exports = {
   },
   //Gets to Plex API to return auth token once the user has authenticated
   plexToken: (req, res) => {
-    console.log("*******************", req.body)
+    console.log("*******************", req.body);
     const options = {
       headers: {
         "X-Plex-Client-Identifier": process.env.PLEX_CLIENT_ID,
@@ -108,9 +108,9 @@ module.exports = {
     return axios
       .get(`https://plex.tv/api/v2/pins/${req.body.id}`, options)
       .then((response) => {
-        console.log("**************")
-        console.log(response)
-        console.log("**************")
+        console.log("**************");
+        console.log(response);
+        console.log("**************");
         if (
           (response.data || {}).clientIdentifier === process.env.PLEX_CLIENT_ID
         ) {
@@ -120,6 +120,25 @@ module.exports = {
             "Client identifiers don't match, Auth Token Grab failed"
           );
         }
+      })
+      .catch((err) => {
+        console.log(err.data);
+      });
+  },
+  //Gets plex user info with the auth token
+  plexUserAccount: (req, res) => {
+    const options = {
+      headers: {
+        "X-Plex-Token": req.body.token,
+      },
+    };
+    return axios
+      .get(`https://plex.tv/users/account.json`, options)
+      .then((response) => {
+        console.log("&&&&&&&&&&&&&&&");
+        console.log(response.data);
+        console.log("&&&&&&&&&&&&&&&");
+        return res.json(response.data);
       })
       .catch((err) => {
         console.log(err.data);
