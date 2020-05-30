@@ -33,6 +33,7 @@ export function App() {
           <Route path="/signin" component={Login} />
           <Route path="/implicit/callback" component={AuthCallback} />
           <PrivateRoute
+            isLoggedIn={loggedIn}
             exact
             path="/"
             component={Home}

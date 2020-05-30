@@ -1,18 +1,15 @@
-import React from "react";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import React, { useContext } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { RootContext } from "../../utils/RootContext";
 import { Link as RouterLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Button from "@material-ui/core/Button";
-import SettingsIcon from "@material-ui/icons/Settings";
 import CustomizedMenues from "./StyledMenu";
 
 import "../../App.css";
 
 const useStyles = makeStyles({
-  root: {
-
-  },
+  root: {},
   headerDiv: {
     backgroundColor: "#03152a",
     padding: "10px",
@@ -25,21 +22,13 @@ const useStyles = makeStyles({
     fontSize: "20pt",
   },
   settingsIcon: {
-      marginLeft: "auto",
-  }
+    marginLeft: "auto",
+  },
 });
 
 export default function Header(props) {
   const classes = useStyles();
-  const [anchorElement, setAnchorElement] = React.useState(null);
-
-  const handleSettingsClick = (event) => {
-    setAnchorElement(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorElement(null);
-  }
-
+  const { authenticated } = useContext(RootContext);
   return (
     <Grid container className={classes.headerDiv}>
       <Grid item xs={1} sm={2} md={2} />
@@ -62,20 +51,7 @@ export default function Header(props) {
       <Grid item xs={5} md={3} sm={3}>
         <Grid container>
           <Grid item className={classes.settingsIcon}>
-            {!props.isLoggedIn && (
-                <React.Fragment>
-                <Button 
-                    aria-controls="settings-button"
-                    aria-haspopup="true"
-                    onClick={handleSettingsClick}
-                    color="primary" 
-                    variant="contained"
-                    endIcon={<SettingsIcon color="secondary"></SettingsIcon>}>
-                    Hi {(props.user || {}).username}
-                </Button>
-                <CustomizedMenues onClick={handleSettingsClick} onClose={handleClose} anchorEl={anchorElement}/>
-              </React.Fragment>
-            )}
+            {!!authenticated && <CustomizedMenues user={props.user} />}
           </Grid>
         </Grid>
       </Grid>

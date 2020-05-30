@@ -1,4 +1,5 @@
 import axios from "axios";
+import {RootContext} from "./RootContext";
 
 export default {
   // Gets user info
@@ -7,6 +8,7 @@ export default {
   },
   // Logs the user out
   logout: function() {
+    localStorage.clear()
     return axios.post('/auth/logout');
   },
   // Log the user in
@@ -30,7 +32,7 @@ export default {
     return axios.post('/auth/signup', userData);
   },
   isLoggedIn: function() {
-    const userInfo = JSON.parse(localStorage.getItem("user"))
+    const userInfo = JSON.parse(localStorage.getItem("user")) || {}
     if(userInfo.authToken) {
       return {loggedIn: true, user: userInfo}
     } else {
