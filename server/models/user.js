@@ -7,6 +7,8 @@ mongoose.promise = Promise;
 const userSchema = new Schema({
 	email: { type: String, unique: true },
 	password: { type: String, unique: false, required: false },
+	username: { type: String, unique: true, required: true},
+	
 	phoneNumber: { type: Number, unique: false, required: false },
 	savedTV: [{ type: Schema.Types.ObjectId, ref: "SavedTV"}],
 	savedMovies: [{ type: Schema.Types.ObjectId, ref: "SavedMovies"}]
