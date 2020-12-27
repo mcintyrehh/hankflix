@@ -2,7 +2,7 @@
 * - this is where we set up our connection to the mongo database
 */
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise; //TODO: remove this when updating to mongoose 5+ which uses native promises
 let MONGO_URL;
 const MONGO_LOCAL_URL = 'mongodb://127.0.0.1/hankflix-db';
 
